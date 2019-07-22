@@ -21,23 +21,15 @@ public class BubbleSort {
 
 	public static boolean isAlreadySorted(int[] input) {
 
-		int size = input.length;
-		boolean isAlreadySorted = true;
-
-		for (int i = 0; i < size - 1; i++) {
+		for (int i = 0; i < input.length - 1; i++) {
 			if (input[i] > input[++i]) {
-				isAlreadySorted = false;
-				break;
+				System.out.println("Unordered array to be sorted : ");
+				return false;
 			}
 		}
 
-		if (isAlreadySorted) {
-			System.out.println("Array already sorted");
-		} else {
-			System.out.println("Unordered array to be sorted : ");
-		}
-
-		return isAlreadySorted;
+		System.out.println("Array already sorted");
+		return true;
 	}
 
 	public static int[] sortArray(int[] input) {
