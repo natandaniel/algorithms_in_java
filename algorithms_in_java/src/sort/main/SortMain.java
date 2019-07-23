@@ -10,22 +10,38 @@ import java.util.Random;
 public class SortMain {
 
 	public static void main(String[] args) {
+		
+		// Worst case scenario 
+		int[] bubbleWorstCase = {10, 9, 8, 7, 6,5 ,4, 3, 2, 1};
+		int[] insertWorstCase = {10, 9, 8, 7, 6,5 ,4, 3, 2, 1};
+		
+		// Random scenario
 
-		int[] bubbleSortinput = new int[20];
+		int[] bubbleSortRandomCase = new int[10];
 		Random random = new Random();
 		
-		for (int i = 0; i < bubbleSortinput.length; i++) {
-			bubbleSortinput[i] = random.nextInt(1000);
+		for (int i = 0; i < bubbleSortRandomCase.length; i++) {
+			bubbleSortRandomCase[i] = random.nextInt(10);
 		}
 		
-		// Making copies for comparison
+		int[] insertionSortRandomCase = Arrays.copyOf(bubbleSortRandomCase, bubbleSortRandomCase.length);
 		
-		int[] insertionSortInput = Arrays.copyOf(bubbleSortinput, bubbleSortinput.length);
-
+		// best case scenario 
+		int[] bubbleBestCase = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		int[] insertBestCase = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+				
 		try {
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(bubbleSortinput)));
+			System.out.println("Sorted array : " + arrayToString(bubbleSort(bubbleWorstCase)));
 			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(insertSort(insertionSortInput)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(insertWorstCase)));
+			System.out.println("");
+			System.out.println("Sorted array : " + arrayToString(bubbleSort(bubbleSortRandomCase)));
+			System.out.println("");
+			System.out.println("Sorted array : " + arrayToString(insertSort(insertionSortRandomCase)));
+			System.out.println("");
+			System.out.println("Sorted array : " + arrayToString(bubbleSort(bubbleBestCase)));
+			System.out.println("");
+			System.out.println("Sorted array : " + arrayToString(insertSort(insertBestCase)));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

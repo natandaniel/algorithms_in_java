@@ -1,7 +1,6 @@
 package sort.bubble;
 
-import static sort.common.Tools.isAlreadySorted;
-import static sort.common.Tools.printIterationCount;
+import static sort.common.Tools.*;
 
 public class BubbleSort {
 
@@ -13,16 +12,18 @@ public class BubbleSort {
 			throw new Exception("Empty input array -> nothing to sort");
 		}
 
-		if (isAlreadySorted(input)) {
-			return input;
-		} else {
-			return sortArray(input);
-		}
+//		if (isAlreadySorted(input)) {
+//			return input;
+//		} else {
+//			return sortArray(input);
+//		}
+
+		return sortArray(input);
 	}
 
 	private static int[] sortArray(int[] input) {
 
-		System.out.println("Bubble sort ...");
+		System.out.println("Bubble sort on : " + arrayToString(input));
 
 		int iterationCount = 0;
 
