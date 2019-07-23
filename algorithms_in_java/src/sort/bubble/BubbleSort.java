@@ -2,6 +2,8 @@ package sort.bubble;
 
 import static sort.common.Tools.*;
 
+import java.util.Arrays;
+
 public class BubbleSort {
 
 	public static int[] bubbleSort(int[] input) throws Exception {
@@ -22,24 +24,26 @@ public class BubbleSort {
 	}
 
 	private static int[] sortArray(int[] input) {
+		
+		int[] copy = Arrays.copyOf(input, input.length);
 
-		System.out.println("Bubble sort on : " + arrayToString(input));
+		System.out.println("Bubble sort on : " + arrayToString(copy));
 
 		int iterationCount = 0;
 
-		for (int i = 0; i < input.length - 1; i++) {
-			for (int j = 0; j < input.length - 1; j++) {
+		for (int i = 0; i < copy.length - 1; i++) {
+			for (int j = 0; j < copy.length - 1; j++) {
 				++iterationCount;
-				if (input[j] > input[j + 1]) {
-					int temp = input[j];
-					input[j] = input[j + 1];
-					input[j + 1] = temp;
+				if (copy[j] > copy[j + 1]) {
+					int temp = copy[j];
+					copy[j] = copy[j + 1];
+					copy[j + 1] = temp;
 				}
 			}
 		}
 
 		printIterationCount(iterationCount);
 
-		return input;
+		return copy;
 	}
 }
