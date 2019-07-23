@@ -1,8 +1,6 @@
 package sort.insertion;
 
-import static sort.common.Tools.*;
-
-import java.util.Random;
+import static sort.common.Tools.isAlreadySorted;
 
 public class InsertionSort {
 
@@ -48,39 +46,4 @@ public class InsertionSort {
 	public static void printIterationCount(int iterationCount) {
 		System.out.println("Number of iterations : " + iterationCount);
 	}
-
-	public static void main(String[] args) {
-
-		int[] input1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-		int[] input2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		int[] input3 = { 654, 1, 45, 72, 85, 42, 13, 7, 20, 1 };
-
-		int[] input4 = new int[15];
-		Random random = new Random();
-		for (int i = 0; i < input4.length; i++) {
-			input4[i] = random.nextInt(50);
-		}
-		int[] input5 = new int[0];
-		int[] input6 = null;
-
-		try {
-			System.out.println("Sorted array : " + arrayToString(insertSort(input1)));
-			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(insertSort(input2)));
-			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(insertSort(input3)));
-			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(insertSort(input4)));
-			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(insertSort(input5)));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			try {
-				System.out.println("Sorted array : " + arrayToString(insertSort(input6)));
-			} catch (Exception e1) {
-				System.out.println(e1.getMessage());
-			}
-		}
-	}
-
 }

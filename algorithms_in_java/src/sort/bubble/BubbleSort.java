@@ -1,8 +1,7 @@
 package sort.bubble;
 
-import static sort.common.Tools.*;
-
-import java.util.Random;
+import static sort.common.Tools.isAlreadySorted;
+import static sort.common.Tools.printIterationCount;
 
 public class BubbleSort {
 
