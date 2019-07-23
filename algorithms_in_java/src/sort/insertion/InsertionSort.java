@@ -1,10 +1,10 @@
-package sort.bubble;
+package sort.insertion;
 
 import java.util.Random;
 
-public class BubbleSort {
+public class InsertionSort {
 
-	public static int[] bubbleSort(int[] input) throws Exception {
+	public static int[] insertSort(int[] input) throws Exception {
 
 		if (input == null) {
 			throw new Exception("Null input array -> nothing to sort");
@@ -34,18 +34,20 @@ public class BubbleSort {
 
 	public static int[] sortArray(int[] input) {
 
-		System.out.println("Bubble sort ...");
+		System.out.println("Insertion sort ...");
 
 		int iterationCount = 0;
 
 		for (int i = 0; i < input.length - 1; i++) {
-			for (int j = 0; j < input.length - 1; j++) {
-				++iterationCount;
-				if (input[j] > input[j + 1]) {
-					int temp = input[j];
-					input[j] = input[j + 1];
-					input[j + 1] = temp;
-				}
+
+			int j = i + 1;
+
+			while (j > 0 && input[j] < input[j - 1]) {
+				iterationCount++;
+				int temp = input[j - 1];
+				input[j - 1] = input[j];
+				input[j] = temp;
+				j = j - 1;
 			}
 		}
 
@@ -81,22 +83,23 @@ public class BubbleSort {
 		int[] input6 = null;
 
 		try {
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(input1)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(input1)));
 			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(input2)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(input2)));
 			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(input3)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(input3)));
 			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(input4)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(input4)));
 			System.out.println("");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(input5)));
+			System.out.println("Sorted array : " + arrayToString(insertSort(input5)));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			try {
-				System.out.println("Sorted array : " + arrayToString(bubbleSort(input6)));
+				System.out.println("Sorted array : " + arrayToString(insertSort(input6)));
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
 		}
 	}
+
 }
