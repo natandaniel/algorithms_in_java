@@ -3,6 +3,7 @@ package sort.main;
 import static sort.bubble.BubbleSort.bubbleSort;
 import static sort.common.Tools.arrayToString;
 import static sort.insertion.InsertionSort.insertSort;
+import static sort.selection.SelectionSort.selectSort;
 
 import java.util.Random;
 
@@ -28,18 +29,25 @@ public class SortMain {
 		try {
 			System.out.println("Worst case scenario");
 			System.out.println("Sorted array : " + arrayToString(bubbleSort(worstCase)));
-			System.out.println("");
+			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(worstCase)));
+			System.out.println("*** ***");
+			System.out.println("Sorted array : " + arrayToString(selectSort(worstCase)));
+			System.out.println("*** ***");
 			System.out.println("");
 			System.out.println("Random case scenario");
 			System.out.println("Sorted array : " + arrayToString(bubbleSort(randomCase)));
-			System.out.println("");
+			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(randomCase)));
+			System.out.println("*** ***");
+			System.out.println("Sorted array : " + arrayToString(selectSort(randomCase)));
 			System.out.println("");
 			System.out.println("Best case scenario");
 			System.out.println("Sorted array : " + arrayToString(bubbleSort(bestCase)));
-			System.out.println("");
+			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(bestCase)));
+			System.out.println("*** ***");
+			System.out.println("Sorted array : " + arrayToString(selectSort(bestCase)));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

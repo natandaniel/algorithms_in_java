@@ -29,7 +29,7 @@ public class InsertionSort {
 
 		System.out.println("Insertion sort on : " + arrayToString(copy));
 
-		int iterationCount = 0;
+		int comparisonCount = 0;
 		int outerIterationCount = 0;
 		
 		for (int i = 0; i < copy.length - 1; i++) {
@@ -38,7 +38,7 @@ public class InsertionSort {
 			outerIterationCount++;
 			
 			while (j > 0 && copy[j] < copy[j - 1]) {
-				iterationCount++;
+				comparisonCount++;
 				int temp = copy[j - 1];
 				copy[j - 1] = copy[j];
 				copy[j] = temp;
@@ -46,17 +46,13 @@ public class InsertionSort {
 			}
 		}
 
-		if(iterationCount == 0) {
+		if(comparisonCount == 0) {
 			printIterationCount(outerIterationCount);
 		}else {
-			printIterationCount(iterationCount);
+			printIterationCount(comparisonCount);
 		}
 		
 
-		return input;
-	}
-
-	public static void printIterationCount(int iterationCount) {
-		System.out.println("Number of iterations : " + iterationCount);
+		return copy;
 	}
 }

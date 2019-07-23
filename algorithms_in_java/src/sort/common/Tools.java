@@ -24,6 +24,6 @@ public class Tools {
 	}
 	
 	public static void printIterationCount(int iterationCount) {
-		System.out.println("Number of iterations : " + iterationCount);
+		System.out.println("Number of comparisons : " + iterationCount);
 	}
 }
