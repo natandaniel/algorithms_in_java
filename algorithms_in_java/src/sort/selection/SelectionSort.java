@@ -31,11 +31,11 @@ public class SelectionSort {
 
 		int comparisonCount = 0;
 		
-		for (int i = 0; i < copy.length - 1; i++) {
+		for (int i = 1; i < copy.length; i++) {
 
-			int indexSmallest = i + 1;
+			int indexSmallest = i;
 
-			for (int j = i + 2; j < copy.length; j++) {
+			for (int j = i+1; j < copy.length; j++) {
 				comparisonCount++;
 				if (copy[indexSmallest] > copy[j]) {
 					indexSmallest = j;
@@ -43,13 +43,13 @@ public class SelectionSort {
 			}
 
 			comparisonCount++;
-			if (copy[indexSmallest] < copy[i]) {
+			if (copy[indexSmallest] < copy[i-1]) {
+				int temp = copy[i-1];
+				copy[i-1] = copy[indexSmallest];
+				copy[indexSmallest] = temp;
+			} else if (copy[indexSmallest] == copy[i-1]) {
 				int temp = copy[i];
 				copy[i] = copy[indexSmallest];
-				copy[indexSmallest] = temp;
-			} else if (copy[indexSmallest] == copy[i]) {
-				int temp = copy[i + 1];
-				copy[i + 1] = copy[indexSmallest];
 				copy[indexSmallest] = temp;
 			}
 		}
