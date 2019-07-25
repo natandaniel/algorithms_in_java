@@ -11,3 +11,7 @@ The insertion sort algorithm. This algorithm has two iteration layers. Each top 
 ## [_Selection Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/algorithms_in_java/src/sort/selection)
 
 The selection sort algorithm. This algorithm has two iteration layers. Each top level iteration considers a sorted subarray of _i_ elements and an unsorted subarray of _N-i_ elements where _N_ is the size of the original array to sort. All the elements in the unsorted subarray are bigger than the elements in the sorted subarray. During each top level iteration, the smallest element in the unsorted subarray is **selected** with an inner iteration and placed at the bottom of the unsorted subarray making place to two new sorted and unsorted subarrays. In every case, the complexity of this algorithm is given by the following formulae : _1 + 2 + 3 + ... + N-1 = N*(N-1)/2_. Indeed, for each subarry of size _M_, _M-1_ comparisons are done. Complexity : **~_O(N^2/2)_**.
+
+## [_Merge Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/algorithms_in_java/src/sort/merge)
+
+The merge sort algorithm. This algorithm uses recursive calls to sort an array. Each recursion verifies if the input array is of size 1. If not, the array is subdivided into two arrays and merge sort is recursiveley called on both arrays. At the end of these calls, the returned sorted arrays are merges into a single array.
