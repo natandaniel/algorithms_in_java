@@ -8,7 +8,7 @@ Each top layer iteration considers the remaining subarray of unsorted elements. 
 
 If _N_ is the size of the array, at most _N-1_ top level iterations are needed to sort the array, each one having **_"bubbled up"_** the _N-1_ biggest elements and leaving the final and smallest element in the first index of the array.
 
-Each top level iteration encompasses a certain amount of comparisons and swaps. If the considered unsorted subarray is of size _N-i_, _N-i-1_ comparisons at most are necesseary. In the optimised version of the algorithm, the comparisons stp when no swap is detected. However, in the non optimised version of the algorithm, the _N-i-1_ comparisons will always occur.
+Each top level iteration encompasses a certain amount of comparisons and swaps. If the considered unsorted subarray is of size _N-i_, _N-i-1_ comparisons at most are necesseary. In the optimised version of the algorithm, the comparisons stop when no swap is detected. However, in the non optimised version of the algorithm, the _N-i-1_ comparisons will always occur.
 
 In every case, worst, random or best, the comparison count for the non optimised bubble sort will always be : **_N-1 + N-2 + ... 2 + 1 = N*(N-1)/2 --> O(N^2/2)_**. On the other hand, depending on the scenario, the swap count will be different. In the the worst case scenario in which the initial array is sorted in descending order, there will be as much swaps as comparisons. In any random case, the swap count will probably be smaller. Finally, in the best case scenario in which the initial array is already sorted in ascending order, there will be no swaps.
 
