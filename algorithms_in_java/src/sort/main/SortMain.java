@@ -1,7 +1,6 @@
 package sort.main;
 
 import static sort.common.Tools.arrayToString;
-import static sort.bubble.BubbleSort.bubbleSort;
 import static sort.insertion.InsertionSort.insertSort;
 import static sort.selection.SelectionSort.selectSort;
 import static sort.merge.MergeSort.mergeSort;
@@ -30,7 +29,6 @@ public class SortMain {
 				
 		try {
 			System.out.println("Worst case scenario");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(worstCase)));
 			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(worstCase)));
 			System.out.println("*** ***");
@@ -41,7 +39,6 @@ public class SortMain {
 			System.out.println("*** ***");
 			System.out.println("");
 			System.out.println("Random case scenario");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(randomCase)));
 			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(randomCase)));
 			System.out.println("*** ***");
@@ -52,7 +49,6 @@ public class SortMain {
 			System.out.println("*** ***");
 			System.out.println("");
 			System.out.println("Best case scenario");
-			System.out.println("Sorted array : " + arrayToString(bubbleSort(bestCase)));
 			System.out.println("*** ***");
 			System.out.println("Sorted array : " + arrayToString(insertSort(bestCase)));
 			System.out.println("*** ***");

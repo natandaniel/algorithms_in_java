@@ -1,40 +1,64 @@
 package sort.bubble;
 
-import static sort.common.Tools.*;
-
 import java.util.Arrays;
 
-public class BubbleSort {
+import sort.common.ISort;
 
-	public static int[] bubbleSort(int[] input) throws Exception {
+import static sort.common.Tools.*;
 
-		if (input == null) {
-			throw new Exception("Null input array -> nothing to sort");
-		} else if (input.length == 0) {
-			throw new Exception("Empty input array -> nothing to sort");
-		}
-
-//		if (isAlreadySorted(input)) {
-//			return input;
-//		} else {
-//			return sortArray(input);
-//		}
-
-		return sortArray(input);
+public class BubbleSort implements ISort{
+	
+	private int comparisonCount;
+	private int swapCount;
+	
+	
+	public BubbleSort() {
+		comparisonCount = 0;
+		swapCount = 0;
 	}
 
-	private static int[] sortArray(int[] input) {
+	@Override
+	public int[] sortArray(int[] input, String sortingAlgorithm) throws Exception {
+
+		if (input == null) {
+			
+			throw new Exception(NULL_ARRAY_ERR_MSG);
+			
+		} else if (input.length == 0) {
+			
+			throw new Exception(EMPTY_ARRAY_ERR_MSG);
+		}
+
+		if (OPT_BUBBLE_SORT.equals(sortingAlgorithm)) {
+			
+			return optimisedBubbleSort(input);
+			
+		} else {
+			
+			return bubbleSort(input);
+		}
+
+	}
+
+	private int[] bubbleSort(int[] input) {
 		
-		int[] copy = Arrays.copyOf(input, input.length);
+		comparisonCount = 0;
+		swapCount = 0;
 
-		System.out.println("Bubble sort on : " + arrayToString(copy));
+		final int N = input.length;
 
-		int comparisonCount = 0;
+		int[] copy = Arrays.copyOf(input, N);
 
-		for (int i = 0; i < copy.length - 1; i++) {
-			for (int j = 0; j < copy.length - 1; j++) {
+		for (int i = N - 1; 1 <= i; i--) {
+
+			for (int j = 0; j <= i - 1; j++) {
+				
 				comparisonCount++;
-				if (copy[j] > copy[j + 1]) {
+				
+				if (copy[j + 1] < copy[j]) {
+					
+					swapCount++;
+
 					int temp = copy[j];
 					copy[j] = copy[j + 1];
 					copy[j + 1] = temp;
@@ -42,8 +66,53 @@ public class BubbleSort {
 			}
 		}
 
-		printIterationCount(comparisonCount);
+		return copy;
+	}
+
+	private int[] optimisedBubbleSort(int[] input) {
+		
+		comparisonCount = 0;
+		swapCount = 0;
+
+		final int N = input.length;
+
+		int[] copy = Arrays.copyOf(input, N);
+
+		for (int i = N - 1; 1 <= i; i--) {
+
+			boolean isSorted = true;
+
+			for (int j = 0; j <= i - 1; j++) {
+				
+				comparisonCount++;
+
+				if (copy[j + 1] < copy[j]) {
+					
+					swapCount++;
+
+					int temp = copy[j];
+					copy[j] = copy[j + 1];
+					copy[j + 1] = temp;
+
+					isSorted = false;
+				}
+			}
+
+			if (isSorted) {
+				break;
+			}
+		}
 
 		return copy;
+	}
+
+	@Override
+	public int getComparisonCount() {
+		return comparisonCount;
+	}
+
+	@Override
+	public int getSwapCount() {
+		return swapCount;
 	}
 }

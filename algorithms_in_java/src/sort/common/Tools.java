@@ -1,8 +1,11 @@
 package sort.common;
 
-import static sort.common.Tools.arrayToString;
-
 public class Tools {
+	
+	public static final String NULL_ARRAY_ERR_MSG = "Array must not be null";
+	public static final String EMPTY_ARRAY_ERR_MSG = "Array must not be empty";
+	public static final String BUBBLE_SORT = "BUBBLE SORT";
+	public static final String OPT_BUBBLE_SORT = "OPTIMISED BUBBLE SORT";
 	
 	public static boolean isAlreadySorted(int[] input) {
 		
@@ -27,6 +30,10 @@ public class Tools {
 			sb.append(array[i] + " ");
 		}
 		return sb.toString();
+	}
+	
+	public static void printArray(int[] array) {
+		System.out.println(arrayToString(array));
 	}
 	
 	public static void printIterationCount(int comparisonCount) {
