@@ -2,7 +2,17 @@
 
 ## [_Bubble Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/algorithms_in_java/src/sort/bubble)
 
-The bubble sort algorithm. This algorithm has two iteration layers. Each top layer iteration **_"bubbles up"_** the biggest element of the array. If _N_ is the size of the array, only _N-1_ top level iterations are needed to sort the array, each one having **_"bubbled up"_** the _N-1_ biggest elements and leaving the final and smallest element, in the first postition of the array. Each top level iteration encompasses another _N-1_ iterations making the complexity always **_(N-1)^2_** -> **_~O(N^2)_**.
+The bubble sort algorithm. This algorithm has two iteration layers.
+
+Each top layer iteration considers the remaining subarray of unsorted elements. The first top layer iteration will therefore consider the entire array. Each of these iterations will have the biggest element of the considered array **_"bubbled up"_** to its last index. The following iteration will manipulate the new subarray of unsorted elements.
+
+If _N_ is the size of the array, at most _N-1_ top level iterations are needed to sort the array, each one having **_"bubbled up"_** the _N-1_ biggest elements and leaving the final and smallest element in the first index of the array.
+
+Each top level iteration encompasses a certain amount of comparisons and swaps. If the considered unsorted subarray is of size _N-i_, _N-i-1_ comparisons at most are necesseary. In the optimised version of the algorithm, the comparisons stp when no swap is detected. However, in the non optimised version of the algorithm, the _N-i-1_ comparisons will always occur.
+
+In every case, worst, random or best, the comparison count for the non optimised bubble sort will always be : **_N-1 + N-2 + ... 2 + 1 = N*(N-1)/2 --> O(N^2/2)_**. On the other hand, depending on the scenario, the swap count will be different. In the the worst case scenario in which the initial array is sorted in descending order, there will be as much swaps as comparisons. In any random case, the swap count will probably be smaller. Finally, in the best case scenario in which the initial array is already sorted in ascending order, there will be no swaps.
+
+For the optimised version of the algorithm, the comparison count can be reduced. In the worst case scenario, the comparison count is still given by **_N-1 + N-2 + ... 2 + 1 = N*(N-1)/2 --> O(N^2/2)_**. In any random case, the comparison count will probably be smaller if at some top layer iteration no swap is detected in the considered subarray. In the best case scenario, the comparison count is exactly **_N-1_**.
 
 ## [_Insertion Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/algorithms_in_java/src/sort/insertion)
 
