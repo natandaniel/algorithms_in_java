@@ -12,7 +12,7 @@ Each top level iteration encompasses a certain amount of comparisons and swaps. 
 
 In every case, worst, random or best, the comparison count for the non optimised bubble sort will always be : **_N-1 + N-2 + ... 2 + 1 = N.(N-1)/2 --> O(N^2/2)_**. On the other hand, depending on the scenario, the swap count will be different. In the the worst case scenario in which the initial array is sorted in descending order, there will be as much swaps as comparisons. In any random case, the swap count will probably be smaller. Finally, in the best case scenario in which the initial array is already sorted in ascending order, there will be no swaps.
 
-For the optimised version of the algorithm, the comparison count can be reduced. In the worst case scenario, the comparison count is still given by **_N-1 + N-2 + ... 2 + 1 = N.(N-1)/2 --> O(N^2/2)_**. In any random case, the comparison count will probably be smaller if at some top layer iteration no swap is detected in the considered subarray. In the best case scenario, the comparison count is exactly **_N-1_**.
+For the optimised version of the algorithm, the comparison count can be reduced. In the worst case scenario, the comparison count is still given by **_N-1 + N-2 + ... 2 + 1 = N.(N-1)/2 --> O(N^2/2)_**. In any random case, the comparison count will probably be smaller if at some top layer iteration no swap is detected in the considered subarray. In the best case scenario, the comparison count is exactly **_N-1_ --> O(N)**.
 
 ## [_Insertion Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/algorithms_in_java/src/sort/insertion)
 
