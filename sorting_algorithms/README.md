@@ -25,3 +25,7 @@ The selection sort algorithm. This algorithm has two iteration layers. Each top 
 ## [_Merge Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/merge)
 
 The merge sort algorithm. This algorithm uses recursive calls to sort an array. Each recursion verifies if the input array is of size 1 in which case it is returned. If not, the array is subdivided into two arrays and merge sort is recursiveley called on both arrays.  At the end of these sortings, the returned sorted arrays are merged into a single array which is then returned. On average and in the worst case scenario, complexity is **_~O(N.log(N))_**.
+
+## [Quick Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/quick)
+
+
