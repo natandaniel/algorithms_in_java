@@ -1,48 +1,15 @@
 package sort.merge;
 
-import static sort.common.Tools.EMPTY_ARRAY_ERR_MSG;
-import static sort.common.Tools.NULL_ARRAY_ERR_MSG;
-
-import java.util.Arrays;
-
-import sort.common.Sort;
 import sort.common.ISort;
+import sort.common.Sort;
 
 public class MergeSort extends Sort implements ISort {
-	
+
 	public MergeSort() {
 		super();
 	}
-	
-	@Override
-	public Integer[] sort(Integer[] input, String sortingAlgorithm) throws Exception {
-		
-		comparisonCount = 0;
-		swapCount = 0;
-		copyCount = 0;
 
-		if (input == null) {
-
-			throw new Exception(NULL_ARRAY_ERR_MSG);
-
-		} else if (input.length == 0) {
-
-			throw new Exception(EMPTY_ARRAY_ERR_MSG);
-			
-		} else if (input.length == 1) {
-			return input;
-
-		} else {
-
-			final int N = input.length;
-			Integer[] copy = Arrays.copyOf(input, N);
-
-			return mergeSort(copy);
-		}
-
-	}
-	
-	private Integer[] mergeSort(Integer[] input) {
+	protected Integer[] sortArray(Integer[] input) {
 
 		comparisonCount++;
 		if (input.length == 1) {
@@ -62,7 +29,7 @@ public class MergeSort extends Sort implements ISort {
 			b[i] = input[i + input.length / 2];
 		}
 
-		input = merge(mergeSort(a), mergeSort(b));
+		input = merge(sortArray(a), sortArray(b));
 		return input;
 	}
 
@@ -90,7 +57,7 @@ public class MergeSort extends Sort implements ISort {
 			}
 
 			if (k < a.length && l < b.length && a[k] == b[l]) {
-				copyCount+=2;
+				copyCount += 2;
 				mergedArray[i] = a[k];
 				mergedArray[i + 1] = b[l];
 				l++;

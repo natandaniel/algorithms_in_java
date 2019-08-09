@@ -66,7 +66,7 @@ public class Tools {
 		printArray(arrayToSort);
 
 		System.out.print("sorted array : ");
-		printArray(sortingImpl.sort(arrayToSort, sortingAlgorithm));
+		printArray(sortingImpl.sort(arrayToSort));
 
 		System.out.println("n° of comparisons : " + sortingImpl.getComparisonCount());
 		System.out.println("n° of swaps : " + sortingImpl.getSwapCount());
