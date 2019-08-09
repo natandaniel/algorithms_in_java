@@ -3,7 +3,7 @@ package sort.insertion;
 import sort.common.ISort;
 import sort.common.Sort;
 
-public class InsertionSort extends Sort implements ISort {
+public class InsertionSort extends Sort{
 
 	public InsertionSort() {
 		super();

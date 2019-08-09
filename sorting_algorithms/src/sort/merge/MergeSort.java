@@ -1,9 +1,8 @@
 package sort.merge;
 
-import sort.common.ISort;
 import sort.common.Sort;
 
-public class MergeSort extends Sort implements ISort {
+public class MergeSort extends Sort {
 
 	public MergeSort() {
 		super();

@@ -3,7 +3,7 @@ package sort.bubble;
 import sort.common.ISort;
 import sort.common.Sort;
 
-public class BubbleSort extends Sort implements ISort {
+public class BubbleSort extends Sort{
 
 	public BubbleSort() {
 		super();

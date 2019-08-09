@@ -1,9 +1,8 @@
 package sort.selection;
 
-import sort.common.ISort;
 import sort.common.Sort;
 
-public class SelectionSort extends Sort implements ISort {
+public class SelectionSort extends Sort{
 
 	public SelectionSort() {
 		super();

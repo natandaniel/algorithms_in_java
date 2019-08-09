@@ -1,9 +1,8 @@
 package sort.quick;
 
-import sort.common.ISort;
 import sort.common.Sort;
 
-public class QuickSort extends Sort implements ISort {
+public class QuickSort extends Sort{
 
 	public QuickSort() {
 		super();
