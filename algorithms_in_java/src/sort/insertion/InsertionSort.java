@@ -1,58 +1,60 @@
 package sort.insertion;
 
-import static sort.common.Tools.*;
-
 import java.util.Arrays;
 
-public class InsertionSort {
+import sort.common.Sort;
+import sort.common.ISort;
 
-	public static int[] insertSort(int[] input) throws Exception {
+public class InsertionSort extends Sort implements ISort {
 
-		if (input == null) {
-			throw new Exception("Null input array -> nothing to sort");
-		} else if (input.length == 0) {
-			throw new Exception("Empty input array -> nothing to sort");
-		}
-
-//		if (isAlreadySorted(input)) {
-//			return input;
-//		} else {
-//			return sortArray(input);
-//		}
-		
-		return sortArray(input);
+	public InsertionSort() {
+		super();
 	}
 
-	public static int[] sortArray(int[] input) {
-		
-		int[] copy = Arrays.copyOf(input, input.length);
+	@Override
+	public Integer[] sort(Integer[] input, String sortingAlgorithm) throws Exception {
 
-		System.out.println("Insertion sort on : " + arrayToString(copy));
+		comparisonCount = 0;
+		swapCount = 0;
+		copyCount = 0;
 
-		int comparisonCount = 0;
-		int outerIterationCount = 0;
-		
-		for (int i = 0; i < copy.length - 1; i++) {
+		if (input == null) {
+
+			throw new Exception("Null input array -> nothing to sort");
+
+		} else if (input.length == 0) {
+
+			throw new Exception("Empty input array -> nothing to sort");
+
+		} else if (input.length == 1) {
+			return input;
+
+		} else {
+
+			final int N = input.length;
+			Integer[] copy = Arrays.copyOf(input, N);
+
+			return insertionSort(copy);
+		}
+	}
+
+	private Integer[] insertionSort(Integer[] input) {
+
+		for (int i = 0; i < input.length - 1; i++) {
 
 			int j = i + 1;
-			outerIterationCount++;
-			
-			while (j > 0 && copy[j] < copy[j - 1]) {
-				comparisonCount++;
-				int temp = copy[j - 1];
-				copy[j - 1] = copy[j];
-				copy[j] = temp;
+			comparisonCount++;
+			while (j > 0 && input[j] < input[j - 1]) {
+
+				swapCount++;
+				copyCount+=3;
+				int temp = input[j - 1];
+				input[j - 1] = input[j];
+				input[j] = temp;
 				j = j - 1;
 			}
 		}
 
-		if(comparisonCount == 0) {
-			printIterationCount(outerIterationCount);
-		}else {
-			printIterationCount(comparisonCount);
-		}
-		
-
-		return copy;
+		return input;
 	}
 }

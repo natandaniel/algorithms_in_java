@@ -1,62 +1,74 @@
 package sort.merge;
 
-import static sort.common.Tools.arrayToString;
+import static sort.common.Tools.EMPTY_ARRAY_ERR_MSG;
+import static sort.common.Tools.NULL_ARRAY_ERR_MSG;
 
 import java.util.Arrays;
 
-public class MergeSort {
-	
-	static int comparisonCount = 0;
+import sort.common.Sort;
+import sort.common.ISort;
 
-	public static int[] mergeSort(int[] input) throws Exception {
+public class MergeSort extends Sort implements ISort {
+	
+	public MergeSort() {
+		super();
+	}
+	
+	@Override
+	public Integer[] sort(Integer[] input, String sortingAlgorithm) throws Exception {
+		
+		comparisonCount = 0;
+		swapCount = 0;
+		copyCount = 0;
 
 		if (input == null) {
-			throw new Exception("Null input array -> nothing to sort");
+
+			throw new Exception(NULL_ARRAY_ERR_MSG);
+
 		} else if (input.length == 0) {
-			throw new Exception("Empty input array -> nothing to sort");
+
+			throw new Exception(EMPTY_ARRAY_ERR_MSG);
+			
+		} else if (input.length == 1) {
+			return input;
+
+		} else {
+
+			final int N = input.length;
+			Integer[] copy = Arrays.copyOf(input, N);
+
+			return mergeSort(copy);
 		}
 
-//		if (isAlreadySorted(input)) {
-//			return input;
-//		} else {
-//			return sortArray(input);
-//		}
-
-		System.out.println("Merge sort on : " + arrayToString(input));
-		
-		int[] copy = Arrays.copyOf(input, input.length);
-		copy = sortArray(copy);
-		System.out.println("Number of comparisons : " + comparisonCount);
-		return copy;
 	}
+	
+	private Integer[] mergeSort(Integer[] input) {
 
-	public static int[] sortArray(int[] input) {
-
-		// System.out.println("Merge sort on : " + arrayToString(input));
-
+		comparisonCount++;
 		if (input.length == 1) {
 			return input;
 		}
 
-		int[] a = new int[input.length / 2];
-		int[] b = new int[input.length - input.length / 2];
+		Integer[] a = new Integer[input.length / 2];
+		Integer[] b = new Integer[input.length - input.length / 2];
 
 		for (int i = 0; i < input.length / 2; i++) {
+			copyCount++;
 			a[i] = input[i];
 		}
 
 		for (int i = 0; i < input.length - input.length / 2; i++) {
-			// System.out.println(i);
+			copyCount++;
 			b[i] = input[i + input.length / 2];
 		}
 
-		input = merge(sortArray(a), sortArray(b));
+		input = merge(mergeSort(a), mergeSort(b));
 		return input;
 	}
 
-	public static int[] merge(int[] a, int[] b) {
+	private Integer[] merge(Integer[] a, Integer[] b) {
 
-		int[] mergedArray = new int[a.length + b.length];
+		Integer[] mergedArray = new Integer[a.length + b.length];
 
 		int k = 0;
 		int l = 0;
@@ -64,18 +76,21 @@ public class MergeSort {
 		for (int i = 0; i < mergedArray.length; i++) {
 			comparisonCount++;
 			if (k < a.length && l < b.length && a[k] < b[l]) {
+				copyCount++;
 				mergedArray[i] = a[k];
 				k++;
 				continue;
 			}
 
 			if (k < a.length && l < b.length && a[k] > b[l]) {
+				copyCount++;
 				mergedArray[i] = b[l];
 				l++;
 				continue;
 			}
 
 			if (k < a.length && l < b.length && a[k] == b[l]) {
+				copyCount+=2;
 				mergedArray[i] = a[k];
 				mergedArray[i + 1] = b[l];
 				l++;
@@ -85,12 +100,14 @@ public class MergeSort {
 			}
 
 			if (k == a.length && l < b.length) {
+				copyCount++;
 				mergedArray[i] = b[l];
 				l++;
 				continue;
 			}
 
 			if (l == b.length && k < a.length) {
+				copyCount++;
 				mergedArray[i] = a[k];
 				k++;
 				continue;
@@ -98,17 +115,5 @@ public class MergeSort {
 		}
 
 		return mergedArray;
-	}
-	
-	public static void setCountToZero() {
-		comparisonCount = 0;
-	}
-
-	public static void main(String[] args) throws Exception {
-
-		// Worst case scenario
-		int[] worstCase = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-
-		System.out.println("Sorted array : " + arrayToString(mergeSort(worstCase)));
 	}
 }

@@ -2,97 +2,89 @@ package sort.bubble;
 
 import java.util.Arrays;
 
+import sort.common.Sort;
 import sort.common.ISort;
 
 import static sort.common.Tools.*;
 
-public class BubbleSort implements ISort{
-	
-	private int comparisonCount;
-	private int swapCount;
-	
-	
+public class BubbleSort extends Sort implements ISort {
+
 	public BubbleSort() {
-		comparisonCount = 0;
-		swapCount = 0;
+		super();
 	}
 
 	@Override
-	public int[] sortArray(int[] input, String sortingAlgorithm) throws Exception {
+	public Integer[] sort(Integer[] input, String sortingAlgorithm) throws Exception {
+		
+		comparisonCount = 0;
+		swapCount = 0;
+		copyCount = 0;
 
 		if (input == null) {
-			
-			throw new Exception(NULL_ARRAY_ERR_MSG);
-			
-		} else if (input.length == 0) {
-			
-			throw new Exception(EMPTY_ARRAY_ERR_MSG);
-		}
 
-		if (OPT_BUBBLE_SORT.equals(sortingAlgorithm)) {
+			throw new Exception(NULL_ARRAY_ERR_MSG);
+
+		} else if (input.length == 0) {
+
+			throw new Exception(EMPTY_ARRAY_ERR_MSG);
 			
-			return optimisedBubbleSort(input);
-			
+		} else if (input.length == 1) {
+			return input;
+
 		} else {
-			
-			return bubbleSort(input);
+
+			final int N = input.length;
+			Integer[] copy = Arrays.copyOf(input, N);
+
+			if (OPT_BUBBLE_SORT.equals(sortingAlgorithm)) {
+
+				return optimisedBubbleSort(copy);
+
+			} else {
+				return bubbleSort(copy);
+			}
 		}
 
 	}
 
-	private int[] bubbleSort(int[] input) {
-		
-		comparisonCount = 0;
-		swapCount = 0;
+	private Integer[] bubbleSort(Integer[] input) {
 
-		final int N = input.length;
-
-		int[] copy = Arrays.copyOf(input, N);
-
-		for (int i = N - 1; 1 <= i; i--) {
+		for (int i = input.length - 1; 1 <= i; i--) {
 
 			for (int j = 0; j <= i - 1; j++) {
-				
-				comparisonCount++;
-				
-				if (copy[j + 1] < copy[j]) {
-					
-					swapCount++;
 
-					int temp = copy[j];
-					copy[j] = copy[j + 1];
-					copy[j + 1] = temp;
+				comparisonCount++;
+				if (input[j + 1] < input[j]) {
+
+					swapCount++;
+					copyCount+=3;
+					int temp = input[j];
+					input[j] = input[j + 1];
+					input[j + 1] = temp;
 				}
 			}
 		}
 
-		return copy;
+		return input;
 	}
 
-	private int[] optimisedBubbleSort(int[] input) {
-		
-		comparisonCount = 0;
-		swapCount = 0;
+	private Integer[] optimisedBubbleSort(Integer[] input) {
 
-		final int N = input.length;
-
-		int[] copy = Arrays.copyOf(input, N);
-
-		for (int i = N - 1; 1 <= i; i--) {
+		for (int i = input.length - 1; 1 <= i; i--) {
 
 			boolean isSorted = true;
 
 			for (int j = 0; j <= i - 1; j++) {
-				
+
 				comparisonCount++;
 
-				if (copy[j + 1] < copy[j]) {
-					
-					swapCount++;
+				if (input[j + 1] < input[j]) {
 
-					int temp = copy[j];
-					copy[j] = copy[j + 1];
-					copy[j + 1] = temp;
+					swapCount++;
+					copyCount+=3;
+					int temp = input[j];
+					input[j] = input[j + 1];
+					input[j + 1] = temp;
 
 					isSorted = false;
 				}
@@ -103,16 +95,6 @@ public class BubbleSort implements ISort{
 			}
 		}
 
-		return copy;
-	}
-
-	@Override
-	public int getComparisonCount() {
-		return comparisonCount;
-	}
-
-	@Override
-	public int getSwapCount() {
-		return swapCount;
+		return input;
 	}
 }

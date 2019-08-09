@@ -1,48 +1,75 @@
 package sort.common;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 public class Tools {
-	
+
 	public static final String NULL_ARRAY_ERR_MSG = "Array must not be null";
 	public static final String EMPTY_ARRAY_ERR_MSG = "Array must not be empty";
-	
+
 	public static final String BUBBLE_SORT = "BUBBLE SORT";
 	public static final String OPT_BUBBLE_SORT = "OPTIMISED BUBBLE SORT";
-	
-	public static final String WORST_CASE = "Worst case";
-	public static final String AVG_CASE = "Average case";
-	public static final String BEST_CASE = "Best case";
+	public static final String INSERTION_SORT = "INSERTION SORT";
+	public static final String SELECTION_SORT = "SELECTION SORT";
+	public static final String MERGE_SORT = "MERGE SORT";
+	public static final String QUICK_SORT = "QUICK SORT";
 
-	
-	public static boolean isAlreadySorted(int[] input) {
-		
-		int comparisonCount = 0;
+	public static final String ARRAY_IN_DESCENDING_ORDER_CASE = "ARRAY IN DESCENDING ORDER CASE";
+	public static final String ARRAY_IN_RANDOM_ORDER_CASE = "ARRAY IN RANDOM ORDER CASE";
+	public static final String ARRAY_IN_ASCENDING_ORDER_CASE = "ARRAY IN ASSCENDING ORDER CASE";
 
-		for (int i = 0; i < input.length - 1; i++) {
-			comparisonCount++;
-			if (input[i] > input[i+1]) {
-				System.out.println("Unordered array to be sorted : " + arrayToString(input));
-				return false;
-			}
-		}
-
-		System.out.println("Array already sorted : " + arrayToString(input));
-		System.out.println("Number of comparisons : " + comparisonCount);
-		return true;
-	}
-	
-	public static String arrayToString(int[] array) {
+	public static String arrayToString(Integer[] array) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < array.length; i++) {
 			sb.append(array[i] + " ");
 		}
 		return sb.toString();
 	}
-	
-	public static void printArray(int[] array) {
+
+	public static void printArray(Integer[] array) {
 		System.out.println(arrayToString(array));
 	}
-	
-	public static void printIterationCount(int comparisonCount) {
-		System.out.println("Number of comparisons : " + comparisonCount);
+
+	public static Map<String, Integer[]> getData(int dataSize) {
+
+		Integer[] randomValues = new Integer[dataSize];
+		Random random = new Random();
+
+		for (int i = 0; i < randomValues.length; i++) {
+			randomValues[i] = random.nextInt(dataSize);
+		}
+
+		Integer[] descOrder = Arrays.copyOf(randomValues, randomValues.length);
+		Arrays.sort(descOrder, Collections.reverseOrder());
+
+		Integer[] ascOrder = Arrays.copyOf(randomValues, randomValues.length);
+		Arrays.sort(ascOrder);
+
+		Map<String, Integer[]> data = new HashMap<String, Integer[]>();
+		data.put(ARRAY_IN_DESCENDING_ORDER_CASE, descOrder);
+		data.put(ARRAY_IN_RANDOM_ORDER_CASE, randomValues);
+		data.put(ARRAY_IN_ASCENDING_ORDER_CASE, ascOrder);
+
+		return data;
+	}
+
+	public static void sort(String sortingAlgorithm, Sort sortingImpl, Integer[] arrayToSort, String scenario)
+			throws Exception {
+
+		System.out.println("Sorting algorithm : " + sortingAlgorithm);
+
+		System.out.print(scenario + " ");
+		printArray(arrayToSort);
+
+		System.out.print("sorted array : ");
+		printArray(sortingImpl.sort(arrayToSort, sortingAlgorithm));
+
+		System.out.println("n° of comparisons : " + sortingImpl.getComparisonCount());
+		System.out.println("n° of swaps : " + sortingImpl.getSwapCount());
+		System.out.println("n° of copies : " + sortingImpl.getCopyCount() + "\n");
 	}
 }

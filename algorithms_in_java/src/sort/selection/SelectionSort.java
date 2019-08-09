@@ -1,61 +1,76 @@
 package sort.selection;
 
-import static sort.common.Tools.*;
+import static sort.common.Tools.EMPTY_ARRAY_ERR_MSG;
+import static sort.common.Tools.NULL_ARRAY_ERR_MSG;
 
 import java.util.Arrays;
 
-public class SelectionSort {
+import sort.common.Sort;
+import sort.common.ISort;
 
-	public static int[] selectSort(int[] input) throws Exception {
+public class SelectionSort extends Sort implements ISort {
 
-		if (input == null) {
-			throw new Exception("Null input array -> nothing to sort");
-		} else if (input.length == 0) {
-			throw new Exception("Empty input array -> nothing to sort");
-		}
-
-//		if (isAlreadySorted(input)) {
-//			return input;
-//		} else {
-//			return sortArray(input);
-//		}
-
-		return sortArray(input);
+	public SelectionSort() {
+		super();
 	}
 
-	public static int[] sortArray(int[] input) {
+	@Override
+	public Integer[] sort(Integer[] input, String sortingAlgorithm) throws Exception {
 
-		int[] copy = Arrays.copyOf(input, input.length);
+		comparisonCount = 0;
+		swapCount = 0;
+		copyCount = 0;
 
-		System.out.println("Selection sort on : " + arrayToString(copy));
+		if (input == null) {
 
-		int comparisonCount = 0;
-		
-		for (int i = 1; i < copy.length; i++) {
+			throw new Exception(NULL_ARRAY_ERR_MSG);
+
+		} else if (input.length == 0) {
+
+			throw new Exception(EMPTY_ARRAY_ERR_MSG);
+
+		} else if (input.length == 1) {
+			return input;
+
+		} else {
+
+			final int N = input.length;
+			Integer[] copy = Arrays.copyOf(input, N);
+
+			return selectSort(copy);
+		}
+
+	}
+
+	private Integer[] selectSort(Integer[] input) {
+
+		for (int i = 1; i < input.length; i++) {
 
 			int indexSmallest = i;
 
-			for (int j = i+1; j < copy.length; j++) {
+			for (int j = i + 1; j < input.length; j++) {
 				comparisonCount++;
-				if (copy[indexSmallest] > copy[j]) {
+				if (input[indexSmallest] > input[j]) {
 					indexSmallest = j;
 				}
 			}
 
 			comparisonCount++;
-			if (copy[indexSmallest] < copy[i-1]) {
-				int temp = copy[i-1];
-				copy[i-1] = copy[indexSmallest];
-				copy[indexSmallest] = temp;
-			} else if (copy[indexSmallest] == copy[i-1]) {
-				int temp = copy[i];
-				copy[i] = copy[indexSmallest];
-				copy[indexSmallest] = temp;
+			if (input[indexSmallest] < input[i - 1]) {
+				swapCount++;
+				copyCount+=3;
+				int temp = input[i - 1];
+				input[i - 1] = input[indexSmallest];
+				input[indexSmallest] = temp;
+			} else if (input[indexSmallest] == input[i - 1]) {
+				swapCount++;
+				copyCount+=3;
+				int temp = input[i];
+				input[i] = input[indexSmallest];
+				input[indexSmallest] = temp;
 			}
 		}
 
-		printIterationCount(comparisonCount);
-
-		return copy;
+		return input;
 	}
 }
