@@ -1,4 +1,4 @@
-package sort.quicksort;
+package sort.quick;
 
 import sort.common.ISort;
 import sort.common.Sort;

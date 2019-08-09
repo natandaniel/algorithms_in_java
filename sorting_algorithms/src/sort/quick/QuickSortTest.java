@@ -1,4 +1,4 @@
-package sort.quicksort;
+package sort.quick;
 
 import static sort.common.Tools.ARRAY_IN_ASCENDING_ORDER_CASE;
 import static sort.common.Tools.ARRAY_IN_DESCENDING_ORDER_CASE;

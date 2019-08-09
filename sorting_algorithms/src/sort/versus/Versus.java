@@ -17,7 +17,7 @@ import sort.bubble.OptimisedBubbleSort;
 import sort.common.Sort;
 import sort.insertion.InsertionSort;
 import sort.merge.MergeSort;
-import sort.quicksort.QuickSort;
+import sort.quick.QuickSort;
 import sort.selection.SelectionSort;
 
 public class Versus {
