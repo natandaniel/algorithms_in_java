@@ -32,6 +32,6 @@ Pseudo-code :
     
 _A_ is the array to sort and _N_ is its size.
 
-The merge sort algorithm recursively sorts _A_ using the _divide and conquer_ paradigm. If A is of size 1, A is returned. Otherwise, A is divided into two subsequences which are in turn sorted by recursively calling merge sort and finally, a merge is completed completely sort A. As long as a subsequence has at least two elements, merge sort is recursively called after dividing the problem into two subproblems.
+The merge sort algorithm recursively sorts _A_ using the _divide and conquer_ paradigm. If A is of size 1, A is returned. Otherwise, A is divided into two subsequences which are in turn sorted by recursively calling merge sort and finally, a merge is completed to sort A. As long as a subsequence has at least two elements, merge sort is recursively called after dividing the problem into two subproblems.
 
 Wether A is initially sorted or not doesn't change the time complexity of this algorithm which will always **_O(n*log(n))_**.
