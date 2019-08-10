@@ -2,7 +2,7 @@
 
 Pseudo-code :
   
-    for j = 2 to A.length
+    for j = 2 to N
      key = A[j]
      //Insert A[j] in the ordered sequence A[1..j-1]
      i = j-1
