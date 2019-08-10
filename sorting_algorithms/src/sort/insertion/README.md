@@ -12,11 +12,10 @@ Pseudo-code :
      A[i+1] = key
     
     
-This algorithm has two iteration layers. Each top level iteration considers a sorted subarray of _i_ elements and an unsorted subarray of _N-i_ elements where _N_ is the size of the array _A_ to sort. At the beginning of the algorithm, the first element of _A_ will constitute the sorted subarray, and the remaining sequence will constitute the unsorted subarray. At the final step of the algorithm, the first _N-1_ elements will constitue the sorted subarray and the last element wil constitue the unsorted subarray. Therefore, this algorithm will always consider _N-1_ values to insert into the correct position, thus a first outer _for_ loop that will operate N-1 times.
+_A_ is the array to sort and _N_ is its size.
 
-During each top level iteration, the first element to the right of the sorted array, named _key_ in the pseudo code, is _**inserted**_ with an inner loop into its correct position within the sorted subarray to its left. At the end of this process, the algorithm now considers two new sorted and unsorted subarrays and repeats the process until the _A_ is completed sorted.
+The insertion sort algorithm iteratively sorts _A_ and starts by considering the subarray holding the first value of _A_. This subarray is by nature already sorted. This algorithm then considers the first element to the right of the sorted subarray, the _key_ value in the pseudo code, and **_inserts_** this value into its correct position within what will be the new sorted subarray. 
 
-If the array is initially sorted in descending order, then _N-1_ insertions are needed. If _i_ is the number of elements in the sorted subarray. The _key_ will be inserted into its correct position after having moved to the right all _i_ elements. Therefore for iteration j, there are j-1
+If _A_ is initially sorted in descending order, then the insertion sort algorithm is faced with its worst case scenario, having to move to the right all the elements of the sorted subarray when a key is to be inserted. The complexity is quadratic relatively to the size of _A_ : **_O(n^2)_**.
 
-
-the complexity is given by the following formulae : _1 + 2 + 3 + ... + N-1 = N*(N-1)/2_. Indeed, for each subarry of size _M_, _M_ insertions may be required and only the first _N-1_ sorted subarrays need to be considered. Final complexity for the worst case scenario: **_~O(N^2/2)_**. In the best case scenario, the array is already sorted and the complexity is **_N-1_**.
+If _A_ is initially sorted in ascending order, then the insertion sort algorithm is faced with its best case scenario where no element has to be moved the right. The complexity is linear relatively to the size of _A_ : **_O(n)_**.
