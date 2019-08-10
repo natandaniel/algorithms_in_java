@@ -10,7 +10,6 @@ public class QuickSort extends Sort{
 
 	protected Integer[] sortArray(Integer[] input) {
 
-		instructionCount++;
 		quickSort(input, 0, input.length - 1);
 
 		return input;

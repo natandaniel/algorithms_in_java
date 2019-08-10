@@ -17,7 +17,7 @@ public class InsertionSortTest {
 
 		System.out.println("Insertion sort");
 
-		Map<String, Integer[]> data = getData(50);
+		Map<String, Integer[]> data = getData(10);
 
 		Sort insertSort = new InsertionSort();
 

@@ -7,89 +7,73 @@ public class MergeSort extends Sort {
 	public MergeSort() {
 		super();
 	}
-
+	
 	protected Integer[] sortArray(Integer[] input) {
-
-		instructionCount++;
-		if (input.length == 1) {
-			instructionCount++;
-			return input;
-		}
-
-		instructionCount+=2;
-		Integer[] a = new Integer[input.length / 2];
-		Integer[] b = new Integer[input.length - input.length / 2];
-
-		
-		for (int i = 0; i < input.length / 2; i++) {
-			instructionCount++;
-			
-			instructionCount++;
-			a[i] = input[i];
-		}
-		instructionCount++; // adding final for loop test to the instruction count
-
-		for (int i = 0; i < input.length - input.length / 2; i++) {
-			instructionCount++;
-			
-			instructionCount++;
-			b[i] = input[i + input.length / 2];
-		}
-		instructionCount++; // adding final for loop test to the instruction count
-
-		instructionCount++;
-		input = merge(sortArray(a), sortArray(b));
-		
+		mergeSort(input, 0, input.length-1);
 		return input;
 	}
 
-	private Integer[] merge(Integer[] a, Integer[] b) {
-
-		instructionCount+=3;
-		Integer[] mergedArray = new Integer[a.length + b.length];
-		int k = 0;
-		int l = 0;
-
-		for (int i = 0; i < mergedArray.length; i++) {
-			instructionCount++;
+	private void mergeSort(Integer[] input, int p, int r) {
+		
+		instructionCount++;
+		if(p<r) {
+			instructionCount+=4;
+			int q = (p+r)/2;
+			mergeSort(input, p, q);
+			mergeSort(input, q+1, r);
+			merge(input,p,q,r);
+		}
+	}
+	
+	private void merge(Integer[] A, int p, int q, int r) {
+		
+		instructionCount+=4;
+		
+		int n1 = q-p+1;
+		int n2 = r-q;
+		Integer[] left = new Integer[n1+1];
+		Integer[] right = new Integer[n2+1];
+		
+		for(int i=0;i<n1;i++) {
 			
-			instructionCount++;
-			if (k < a.length && l < b.length && a[k] < b[l]) {
+			instructionCount+=2;
+			
+			left[i] = A[p+i]; // left contains A[p..q]
+		}
+		instructionCount++;
+		
+		for(int i=0;i<n2;i++) {
+			
+			instructionCount+=2;
+			
+			right[i] = A[q+1+i]; // right contains A[q+1..r]
+		}
+		instructionCount++;
+		
+		instructionCount=+4;
+		left[n1] = (int) Double.POSITIVE_INFINITY; // value used to know when the end of the array has been reached
+		right[n2] = (int) Double.POSITIVE_INFINITY;
+		
+		int i=0;
+		int j=0;
+		
+		for(int k=p; k<=r; k++) {
+			
+			instructionCount+=2;
+			
+			if(left[i] <= right[j]) {
 				
 				instructionCount+=2;
-				mergedArray[i] = a[k];
-				k++;
 				
-			}else if (k < a.length && l < b.length && a[k] > b[l]) {
-				
-				instructionCount+=2;
-				mergedArray[i] = b[l];
-				l++;
-				
-			}else if (k < a.length && l < b.length && a[k] == b[l]) {
-				
-				instructionCount+=5;
-				mergedArray[i] = a[k];
-				mergedArray[i + 1] = b[l];
-				l++;
-				k++;
+				A[k] = left[i];
 				i++;
-				
-			}else if (k == a.length && l < b.length) {
-				
-				instructionCount+=2;
-				mergedArray[i] = b[l];
-				l++;
-				
-			}else if (l == b.length && k < a.length) {
+			}else {
 				
 				instructionCount+=2;
-				mergedArray[i] = a[k];
-				k++;
+				
+				A[k] = right[j];
+				j++;
 			}
 		}
-		instructionCount++; // adding final for loop test to the instruction count
-
-		return mergedArray;
 	}
 }
