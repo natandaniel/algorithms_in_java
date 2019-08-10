@@ -32,9 +32,6 @@ Pseudo-code :
     
 _A_ is the array to sort and _N_ is its size.
 
-The merge sort algorithm recursively sorts _A_. It subdivides A has at least two elements, it divides A into two and calls merge sort on both subsequences.
-Finally it merges both sorted subsequences into one. 
+The merge sort algorithm recursively sorts _A_ using the _divide and conquer_ paradigm. If A is of size 1, A is returned. Otherwise, A is divided into two subsequences which are in turn sorted by recursively calling merge sort and finally, a merge is completed completely sort A. As long as a subsequence has at least two elements, merge sort is recursively called after dividing the problem into two subproblems.
 
-If _A_ is initially sorted in descending order, then the insertion sort algorithm is faced with its worst case scenario, having to move to the right all the elements of the sorted subarray when a key is to be inserted. The complexity is quadratic relatively to the size of _A_ : **_O(n^2)_**.
-
-If _A_ is initially sorted in ascending order, then the insertion sort algorithm is faced with its best case scenario where no element has to be moved the right. The complexity is linear relatively to the size of _A_ : **_O(n)_**.
+Wether A is initially sorted or not doesn't change the time complexity of this algorithm which will always **_O(n*log(n))_**.
