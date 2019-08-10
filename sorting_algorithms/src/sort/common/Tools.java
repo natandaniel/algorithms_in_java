@@ -20,7 +20,7 @@ public class Tools {
 
 	public static final String ARRAY_IN_DESCENDING_ORDER_CASE = "ARRAY IN DESCENDING ORDER CASE";
 	public static final String ARRAY_IN_RANDOM_ORDER_CASE = "ARRAY IN RANDOM ORDER CASE";
-	public static final String ARRAY_IN_ASCENDING_ORDER_CASE = "ARRAY IN ASSCENDING ORDER CASE";
+	public static final String ARRAY_IN_ASCENDING_ORDER_CASE = "ARRAY IN ASCENDING ORDER CASE";
 
 	public static String arrayToString(Integer[] array) {
 		StringBuilder sb = new StringBuilder();
@@ -68,8 +68,6 @@ public class Tools {
 		System.out.print("sorted array : ");
 		printArray(sortingImpl.sort(arrayToSort));
 
-		System.out.println("n° of comparisons : " + sortingImpl.getComparisonCount());
-		System.out.println("n° of swaps : " + sortingImpl.getSwapCount());
-		System.out.println("n° of copies : " + sortingImpl.getCopyCount() + "\n");
+		System.out.println("n° of instructions executed : " + sortingImpl.getInstructionCount());
 	}
 }

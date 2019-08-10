@@ -10,6 +10,7 @@ public class QuickSort extends Sort{
 
 	protected Integer[] sortArray(Integer[] input) {
 
+		instructionCount++;
 		quickSort(input, 0, input.length - 1);
 
 		return input;
@@ -17,8 +18,9 @@ public class QuickSort extends Sort{
 
 	private void quickSort(Integer[] input, int firstIndex, int lastIndex) {
 
-		comparisonCount++;
+		instructionCount++;
 		if (firstIndex < lastIndex) {
+			instructionCount+=3;
 			int pivotIndex = partitionArray(input, firstIndex, lastIndex);
 			quickSort(input, firstIndex, pivotIndex - 1);
 			quickSort(input, pivotIndex + 1, lastIndex);
@@ -27,33 +29,37 @@ public class QuickSort extends Sort{
 
 	private int partitionArray(Integer[] array, int p, int r) {
 
+		instructionCount+=2;
 		int pivotValue = array[r];
-
 		int i = p - 1;
 
 		for (int j = p; j < r; j++) {
-			comparisonCount++;
+			instructionCount++;
+			
+			instructionCount++;
 			if (array[j] <= pivotValue) {
+				
+				instructionCount+=2;
 				i++;
 				if (i != j) {
-					swapCount++;
-					copyCount += 3;
+					instructionCount+=3;
 					int save = array[i];
 					array[i] = array[j];
 					array[j] = save;
 				}
 			}
 		}
+		instructionCount++; // adding final for loop test to the instruction count
 
+		instructionCount++;
 		if (i + 1 != r) {
-			swapCount++;
-			copyCount += 3;
+			instructionCount+=3;
 			int save = array[i + 1];
 			array[i + 1] = pivotValue;
 			array[r] = save;
 		}
 
+		instructionCount++;
 		return i + 1;
-
 	}
 }

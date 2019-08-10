@@ -4,22 +4,16 @@ import java.util.Arrays;
 
 public abstract class Sort implements ISort {
 
-	protected int comparisonCount;
-	protected int swapCount;
-	protected int copyCount;
+	protected int instructionCount;
 
 	public Sort() {
-		comparisonCount = 0;
-		swapCount = 0;
-		copyCount = 0;
+		instructionCount = 0;
 	}
 	
 	@Override
 	public Integer[] sort(Integer[] input) throws Exception {
 
-		comparisonCount = 0;
-		swapCount = 0;
-		copyCount = 0;
+		instructionCount = 0;
 
 		if (input == null) {
 
@@ -43,15 +37,7 @@ public abstract class Sort implements ISort {
 	
 	protected abstract Integer[] sortArray(Integer[] input);
 	
-	public int getComparisonCount() {
-		return comparisonCount;
-	}
-
-	public int getSwapCount() {
-		return swapCount;
-	}
-
-	public int getCopyCount() {
-		return copyCount;
+	public int getInstructionCount() {
+		return instructionCount;
 	}
 }

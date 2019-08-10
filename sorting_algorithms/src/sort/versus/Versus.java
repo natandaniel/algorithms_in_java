@@ -1,6 +1,6 @@
 package sort.versus;
 
-import static sort.common.Tools.ARRAY_IN_RANDOM_ORDER_CASE;
+import static sort.common.Tools.*;
 import static sort.common.Tools.BUBBLE_SORT;
 import static sort.common.Tools.INSERTION_SORT;
 import static sort.common.Tools.MERGE_SORT;
@@ -39,7 +39,26 @@ public class Versus {
 		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_RANDOM_ORDER_CASE), ARRAY_IN_RANDOM_ORDER_CASE);
 		sort(MERGE_SORT, mergeSort, data.get(ARRAY_IN_RANDOM_ORDER_CASE), ARRAY_IN_RANDOM_ORDER_CASE);
 		sort(QUICK_SORT, quickSort, data.get(ARRAY_IN_RANDOM_ORDER_CASE), ARRAY_IN_RANDOM_ORDER_CASE);
-
+		
+		System.out.println("***********************************************************************");
+		
+		sort(BUBBLE_SORT, bubbleSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		sort(OPT_BUBBLE_SORT, optBubbleSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		sort(SELECTION_SORT, selectSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		sort(MERGE_SORT, mergeSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		sort(QUICK_SORT, quickSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		
+		System.out.println("***********************************************************************");
+		
+		sort(BUBBLE_SORT, bubbleSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		sort(OPT_BUBBLE_SORT, optBubbleSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		sort(SELECTION_SORT, selectSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		sort(MERGE_SORT, mergeSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		sort(QUICK_SORT, quickSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE), ARRAY_IN_DESCENDING_ORDER_CASE);
+		
+		System.out.println("***********************************************************************");
 	}
 
 }

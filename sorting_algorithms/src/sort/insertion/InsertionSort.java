@@ -1,6 +1,5 @@
 package sort.insertion;
 
-import sort.common.ISort;
 import sort.common.Sort;
 
 public class InsertionSort extends Sort{
@@ -11,20 +10,26 @@ public class InsertionSort extends Sort{
 
 	protected Integer[] sortArray(Integer[] input) {
 
-		for (int i = 0; i < input.length - 1; i++) {
+		for (int j = 1; j < input.length; j++) {
+			instructionCount++;
+			
+			instructionCount+=2;
+			int key = input[j];
+			int i = j-1;
+			
+			while(0 <= i && key < input[i]) {
+				instructionCount++;
 
-			int j = i + 1;
-			comparisonCount++;
-			while (j > 0 && input[j] < input[j - 1]) {
-
-				swapCount++;
-				copyCount += 3;
-				int temp = input[j - 1];
-				input[j - 1] = input[j];
-				input[j] = temp;
-				j = j - 1;
+				instructionCount+=2;
+				input[i+1] = input[i];
+				i--;
 			}
+			instructionCount++; // adding final inner while loop test to the instruction count
+			
+			instructionCount++;
+			input[i+1] = key;
 		}
+		instructionCount++; // adding final outer for loop test to the instruction count
 
 		return input;
 	}
