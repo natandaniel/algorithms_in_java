@@ -9,9 +9,10 @@ public class GraphMain {
 		graph.addNode(1, 2);
 		graph.addNode(2, 0, 3);
 		graph.addNode(3, 3);
+		graph.addNode(3, 3);
 		
 		System.out.println(graph);
 		
+		BreadthFirst.traverse(graph, 2);
 	}
-
 }
