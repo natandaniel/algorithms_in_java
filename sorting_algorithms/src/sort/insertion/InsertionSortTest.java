@@ -1,29 +1,26 @@
 package sort.insertion;
 
-import static sort.common.Tools.ARRAY_IN_ASCENDING_ORDER_CASE;
-import static sort.common.Tools.ARRAY_IN_DESCENDING_ORDER_CASE;
-import static sort.common.Tools.ARRAY_IN_RANDOM_ORDER_CASE;
-import static sort.common.Tools.INSERTION_SORT;
-import static sort.common.Tools.getData;
-import static sort.common.Tools.sort;
+import java.util.Random;
 
-import java.util.Map;
+import sort.common.Tools;
 
-import sort.common.Sort;
+class InsertionSortTest {
 
-public class InsertionSortTest {
-
-	public static void main(String[] args) throws Exception {
-
+	public static void main(String[] args) {
 		System.out.println("Insertion sort");
 
-		Map<String, Integer[]> data = getData(10);
+		int[] randomValues = new int[10];
+		Random random = new Random();
 
-		Sort insertSort = new InsertionSort();
+		for (int i = 0; i < randomValues.length; i++)
+			randomValues[i] = random.nextInt(10);
 
-		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_DESCENDING_ORDER_CASE),
-				ARRAY_IN_DESCENDING_ORDER_CASE);
-		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_RANDOM_ORDER_CASE), ARRAY_IN_RANDOM_ORDER_CASE);
-		sort(INSERTION_SORT, insertSort, data.get(ARRAY_IN_ASCENDING_ORDER_CASE), ARRAY_IN_ASCENDING_ORDER_CASE);
+		InsertionSort.ascendingOrderSort(randomValues);
+
+		Tools.printArray(randomValues);
+
+		InsertionSort.descendingOrderSort(randomValues);
+
+		Tools.printArray(randomValues);
 	}
 }

@@ -22,16 +22,12 @@ public class Tools {
 	public static final String ARRAY_IN_RANDOM_ORDER_CASE = "ARRAY IN RANDOM ORDER CASE";
 	public static final String ARRAY_IN_ASCENDING_ORDER_CASE = "ARRAY IN ASCENDING ORDER CASE";
 
-	public static String arrayToString(Integer[] array) {
+	public static void printArray(int[] array) {
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i < array.length; i++)
 			sb.append(array[i] + " ");
-		}
-		return sb.toString();
-	}
 
-	public static void printArray(Integer[] array) {
-		System.out.println(arrayToString(array));
+		System.out.println(sb.toString());
 	}
 
 	public static Map<String, Integer[]> getData(int dataSize) {
