@@ -1,5 +1,8 @@
 # Insertion Sort
 
+input : sequence _A_ of numbers a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>N</sub>
+output : a permutation of _A_ a'<sub>1</sub>, a'<sub>2</sub>, ..., a'<sub>N</sub> such as a'<sub>1</sub> <= a'<sub>2</sub> <= a'<sub>3</sub>...
+
 Pseudo-code :
   
     for j = 2 to N
