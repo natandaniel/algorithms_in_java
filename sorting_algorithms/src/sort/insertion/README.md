@@ -31,3 +31,7 @@ _termination_ : the algorithm ends when A[N] is inserted into sequence A[1..N-1]
 If _A_ is initially sorted in descending order, then the insertion sort algorithm is faced with its worst case scenario, having to shift to the right all the elements of the sorted subarray when a key is to be inserted. The time complexity is quadratic relatively to the size of _A_ : **_O(N^2)_**.
 
 If _A_ is initially sorted in ascending order, then the insertion sort algorithm is faced with its best case scenario where no element has to be moved the right. The time complexity is linear relatively to the size of _A_ : **_O(N)_**.
+
+This algorithm is therefore efficient with a small amount of numbers and proves to be a good choice in such cases as it remains relatively easy to implement.
+
+However, when there are a lot of number to sort, this algorithm is too slow and another algorithm should be considered (for instance the merge sort).
