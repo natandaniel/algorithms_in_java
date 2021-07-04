@@ -24,3 +24,5 @@ _conservation_ : considering A[i] is equal or not to value v, A[i+1] is also eit
 _termination_ : the algorithm ends if there is an index i such that A[i] is equal to v or if no values within A are equal to v
 
 If _A_ does not contain _v_ or contains _v_ at the last index, then the linear search algorithm is faced with its worst case scenario, having to compare all of its the elements with _v_. The time complexity is linear relatively to the size of _A_ : **_O(N)_**.
+
+If _A_ contains v at its first index, then the linear search algorithm is faced with its best case scenario, having to operate a single comparison, complexity is : **_O(1)_**.
