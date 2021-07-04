@@ -1,9 +1,9 @@
 # Binary Addition
 
+input : sequence _A_ of _N_ integers a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>N</sub> equal to 0 or 1 providing a binary representation of an integer value; 
+sequence _B_ of _N_ integers b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>N</sub> equal to 0 or 1 providing a binary representation of an integer value;
 
-input : sequence _A_ of _N_ numbers a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>N</sub> between 0 and 1 providing a binary representation of an integer value; sequence _B_ of _N_ numbers b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>N</sub> between 0 and 1 providing a binary representation of an integer value;
-
-output :  sequence _C_ of _N+1_ numbers c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>N+1</sub> between 0 and 1 providing a binary representation of the sum of the integers represented by _A_ and _B_
+output :  sequence _C_ of _N+1_ integers c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>N+1</sub> equal to 0 or 1 providing a binary representation of the sum of the integers represented by _A_ and _B_
 
 Pseudo-code :
     	
