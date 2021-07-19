@@ -9,11 +9,11 @@ pseudo-code :
  
     N = A.length  
     for j = 1 to N-1
-    	min = j
-    	for i = j+1 to N
-       	if A[i] < A[min]
-       		min = i
-     	switch A[j] and A[min]  
+     min = j
+     for i = j+1 to N
+      if A[i] < A[min]
+       min = i
+     switch A[j] and A[min]  
 
 
 Proof of correctness : 
