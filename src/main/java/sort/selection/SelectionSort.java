@@ -1,47 +1,39 @@
 package sort.selection;
 
-import sort.common.Sort;
+/**
+ * 
+ * Provides an implementation of the selection sort algorithm.
+ * <p>
+ * Time complexity : O(N^2).
+ *
+ */
+class SelectionSort {
 
-public class SelectionSort extends Sort{
-
-	public SelectionSort() {
-		super();
+	private SelectionSort() {
 	}
 
-	protected Integer[] sortArray(Integer[] input) {
+	/**
+	 * Sorts the input array in ascending or descending order.
+	 * 
+	 * @param input                  an integer array, must not be null
+	 * @param isSortInAscendingOrder if true, sorts the input array in ascending
+	 *                               order, otherwise in descending order
+	 */
+	static void sort(int[] input, boolean isSortInAscendingOrder) {
+		int length = input.length;
 
-		for (int i = 1; i < input.length; i++) {
-			instructionCount++;
+		for (int j = 0; j < length - 1; j++) {
+			int minOrMax = j;
 
-			instructionCount++;
-			int indexSmallest = i;
-
-			for (int j = i + 1; j < input.length; j++) {
-				instructionCount++;
-				
-				instructionCount++;
-				if (input[indexSmallest] > input[j]) {
-					instructionCount++;
-					indexSmallest = j;
-				}
+			for (int i = j; i < length; i++) {
+				if (isSortInAscendingOrder ? input[i] < input[minOrMax] : input[minOrMax] < input[i])
+					minOrMax = i;
 			}
-			instructionCount++; // adding final inner for loop test to the instruction count
 
-			instructionCount++;
-			if (input[indexSmallest] < input[i - 1]) {
-				instructionCount+=3;
-				int temp = input[i - 1];
-				input[i - 1] = input[indexSmallest];
-				input[indexSmallest] = temp;
-			} else if (input[indexSmallest] == input[i - 1]) {
-				instructionCount+=3;
-				int temp = input[i];
-				input[i] = input[indexSmallest];
-				input[indexSmallest] = temp;
-			}
+			int tmp = input[j];
+			input[j] = input[minOrMax];
+			input[minOrMax] = tmp;
 		}
-		instructionCount++; // adding final outer for loop test to the instruction count
-
-		return input;
 	}
+
 }
