@@ -2,14 +2,9 @@ package sort.insertion;
 
 /**
  * 
- * Utility class providing two methods for the insertion sort of an array of integers :
- * <ul>
- * <li>ascendingOrderSort : sorts numbers in ascending order</i>
- * <li>descendingOrderSort : sorts numbers in descending order</i>
- * </ul>
- * 
+ * Provides an implementation of the insertion sort algorithm.
  * <p>
- * Time complexity : between O(N) and O(N^2)
+ * Time complexity : between O(N) and O(N^2).
  *
  */
 class InsertionSort {
@@ -17,12 +12,19 @@ class InsertionSort {
 	private InsertionSort() {
 	}
 
-	static void ascendingOrderSort(int[] input) {
+	/**
+	 * Sorts the input array in ascending or descending order.
+	 * 
+	 * @param input                  an integer array, must not be null
+	 * @param isSortInAscendingOrder if true, sorts the input array in ascending
+	 *                               order, otherwise in descending order
+	 */
+	static void sort(int[] input, boolean isSortInAscendingOrder) {
 		for (int j = 1; j < input.length; j++) {
 			int key = input[j];
 			int i = j - 1;
 
-			while (-1 < i && key < input[i]) {
+			while (-1 < i && (isSortInAscendingOrder ? key < input[i] : input[i] < key)) {
 				input[i + 1] = input[i];
 				i--;
 			}
@@ -31,17 +33,4 @@ class InsertionSort {
 		}
 	}
 
-	static void descendingOrderSort(int[] input) {
-		for (int j = 1; j < input.length; j++) {
-			int key = input[j];
-			int i = j - 1;
-
-			while (-1 < i && input[i] < key) {
-				input[i + 1] = input[i];
-				i--;
-			}
-
-			input[i + 1] = key;
-		}
-	}
 }
