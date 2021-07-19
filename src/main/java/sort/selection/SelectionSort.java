@@ -25,7 +25,7 @@ class SelectionSort {
 		for (int j = 0; j < length - 1; j++) {
 			int minOrMax = j;
 
-			for (int i = j; i < length; i++) {
+			for (int i = j + 1; i < length; i++) {
 				if (isSortInAscendingOrder ? input[i] < input[minOrMax] : input[minOrMax] < input[i])
 					minOrMax = i;
 			}
