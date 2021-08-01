@@ -1,77 +1,64 @@
 package sort.merge;
 
-import sort.common.Sort;
+import java.util.Objects;
 
-public class MergeSort extends Sort {
+/**
+ * 
+ * Provides an implementation of the merge sort algorithm.
+ * <p>
+ * Time complexity : O(N*log(N)).
+ *
+ */
+class MergeSort {
 
-	public MergeSort() {
-		super();
+	private MergeSort() {
 	}
-	
-	protected Integer[] sortArray(Integer[] input) {
-		mergeSort(input, 0, input.length-1);
-		return input;
+
+	/**
+	 * Sorts the input array in ascending or descending order.
+	 * 
+	 * @param input                  an integer array, must not be null
+	 * @param isSortInAscendingOrder if true, sorts the input array in ascending
+	 *                               order, otherwise in descending order
+	 */
+	static void sort(int[] input, boolean isSortInAscendingOrder) {
+		Objects.requireNonNull(input);
+
+		if (input.length <= 1)
+			return;
+
+		mergeSort(input, 0, input.length - 1, isSortInAscendingOrder);
 	}
 
-	private void mergeSort(Integer[] input, int p, int r) {
-		
-		instructionCount++;
-		if(p<r) {
-			instructionCount+=4;
-			int q = (p+r)/2;
-			mergeSort(input, p, q);
-			mergeSort(input, q+1, r);
-			merge(input,p,q,r);
+	private static void mergeSort(int[] input, int p, int r, boolean isSortInAscendingOrder) {
+		if (p < r) {
+			int q = (p + r) / 2;
+			mergeSort(input, p, q, isSortInAscendingOrder);
+			mergeSort(input, q + 1, r, isSortInAscendingOrder);
+			merge(input, p, q, r, isSortInAscendingOrder);
 		}
 	}
-	
-	private void merge(Integer[] A, int p, int q, int r) {
-		
-		instructionCount+=4;
-		
-		int n1 = q-p+1;
-		int n2 = r-q;
-		Integer[] left = new Integer[n1+1];
-		Integer[] right = new Integer[n2+1];
-		
-		for(int i=0;i<n1;i++) {
-			
-			instructionCount+=2;
-			
-			left[i] = A[p+i]; // left contains A[p..q]
-		}
-		instructionCount++;
-		
-		for(int i=0;i<n2;i++) {
-			
-			instructionCount+=2;
-			
-			right[i] = A[q+1+i]; // right contains A[q+1..r]
-		}
-		instructionCount++;
-		
-		instructionCount=+4;
-		left[n1] = (int) Double.POSITIVE_INFINITY; // value used to know when the end of the array has been reached
-		right[n2] = (int) Double.POSITIVE_INFINITY;
-		
-		int i=0;
-		int j=0;
-		
-		for(int k=p; k<=r; k++) {
-			
-			instructionCount+=2;
-			
-			if(left[i] <= right[j]) {
-				
-				instructionCount+=2;
-				
-				A[k] = left[i];
+
+	private static void merge(int[] input, int p, int q, int r, boolean isSortInAscendingOrder) {
+		int[] left = new int[q - p + 1];
+		int[] right = new int[r - q];
+
+		for (int i = 0; i < left.length; i++)
+			left[i] = input[p + i];
+
+		for (int i = 0; i < right.length; i++)
+			right[i] = input[q + 1 + i];
+
+		int i = 0;
+		int j = 0;
+		for (int k = p; k <= r; k++) {
+			if (j == right.length
+					|| i < left.length && (isSortInAscendingOrder ? left[i] <= right[j] : left[i] >= right[j])) {
+				input[k] = left[i];
 				i++;
-			}else {
-				
-				instructionCount+=2;
-				
-				A[k] = right[j];
+			} else if (i == left.length
+					|| j < right.length && (isSortInAscendingOrder ? right[i] <= left[j] : right[i] >= left[j])) {
+				input[k] = right[j];
 				j++;
 			}
 		}
