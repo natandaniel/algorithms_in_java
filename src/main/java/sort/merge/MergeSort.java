@@ -3,64 +3,70 @@ package sort.merge;
 import java.util.Objects;
 
 /**
- * 
- * Provides an implementation of the merge sort algorithm.
+ * Provides an implementation of the merge sort algorithm applied to integers.</br>
+ * Values can be sorted in both ascending and descending orders.
  * <p>
  * Time complexity : O(N*log(N)).
- *
  */
 class MergeSort {
 
-	private MergeSort() {
-	}
+  private MergeSort() {}
 
-	/**
-	 * Sorts the input array in ascending or descending order.
-	 * 
-	 * @param input                  an integer array, must not be null
-	 * @param isSortInAscendingOrder if true, sorts the input array in ascending
-	 *                               order, otherwise in descending order
-	 */
-	static void sort(int[] input, boolean isSortInAscendingOrder) {
-		Objects.requireNonNull(input);
+  /**
+   * Sorts the input array of integers in ascending or descending order.
+   * 
+   * @param input
+   *          an array of integers, must not be null
+   * @param isSortInAscendingOrder
+   *          if true, sorts the input array in ascending order, otherwise in descending order
+   * @throws NullPointerException
+   *           if input is null
+   */
+  static void sort(int[] input, boolean isSortInAscendingOrder) {
+    Objects.requireNonNull(input);
 
-		if (input.length <= 1)
-			return;
+    if (input.length <= 1) return;
 
-		mergeSort(input, 0, input.length - 1, isSortInAscendingOrder);
-	}
+    mergeSort(input, 0, input.length - 1, isSortInAscendingOrder);
+  }
 
-	private static void mergeSort(int[] input, int p, int r, boolean isSortInAscendingOrder) {
-		if (p < r) {
-			int q = (p + r) / 2;
-			mergeSort(input, p, q, isSortInAscendingOrder);
-			mergeSort(input, q + 1, r, isSortInAscendingOrder);
-			merge(input, p, q, r, isSortInAscendingOrder);
-		}
-	}
+  private static void mergeSort(int[] input, int startIndex, int endIndex, boolean isSortInAscendingOrder) {
+    if (startIndex < endIndex) {
+      int midddleIndex = (startIndex + endIndex) / 2;
+      mergeSort(input, startIndex, midddleIndex, isSortInAscendingOrder);
+      mergeSort(input, midddleIndex + 1, endIndex, isSortInAscendingOrder);
+      merge(input, startIndex, midddleIndex, endIndex, isSortInAscendingOrder);
+    }
+  }
 
-	private static void merge(int[] input, int p, int q, int r, boolean isSortInAscendingOrder) {
-		int[] left = new int[q - p + 1];
-		int[] right = new int[r - q];
+  private static void merge(int[] input, int startIndex, int middleIndex, int endIndex, boolean isSortInAscendingOrder) {
+    int leftLength = middleIndex - startIndex + 1;
+    int[] left = new int[leftLength];
 
-		for (int i = 0; i < left.length; i++)
-			left[i] = input[p + i];
+    int rightLength = endIndex - middleIndex;
+    int[] right = new int[rightLength];
 
-		for (int i = 0; i < right.length; i++)
-			right[i] = input[q + 1 + i];
+    for (int i = 0; i < leftLength; i++)
+      left[i] = input[startIndex + i];
 
-		int i = 0;
-		int j = 0;
-		for (int k = p; k <= r; k++) {
-			if (j == right.length
-					|| i < left.length && (isSortInAscendingOrder ? left[i] <= right[j] : left[i] >= right[j])) {
-				input[k] = left[i];
-				i++;
-			} else if (i == left.length
-					|| j < right.length && (isSortInAscendingOrder ? right[i] <= left[j] : right[i] >= left[j])) {
-				input[k] = right[j];
-				j++;
-			}
-		}
-	}
+    for (int i = 0; i < rightLength; i++)
+      right[i] = input[middleIndex + 1 + i];
+
+    int leftIndex = 0;
+    int rightIndex = 0;
+
+    for (int inputIndex = startIndex; inputIndex <= endIndex; inputIndex++) {
+      if (leftIndex < leftLength) {
+        int currentLeftValue = left[leftIndex];
+
+        if (rightIndex == rightLength || (isSortInAscendingOrder ? currentLeftValue <= right[rightIndex] : currentLeftValue >= right[rightIndex])) {
+          input[inputIndex] = currentLeftValue;
+          leftIndex++;
+        }
+        else input[inputIndex] = right[rightIndex++];
+      }
+      else if (rightIndex < rightLength) input[inputIndex] = right[rightIndex++];
+    }
+  }
+
 }
