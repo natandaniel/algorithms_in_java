@@ -3,10 +3,14 @@ package sort.merge;
 import java.util.Objects;
 
 /**
- * Provides an implementation of the merge sort algorithm applied to integers.</br>
+ * Provides an implementation of the merge sort algorithm applied to an array of integers.</br>
  * Values can be sorted in both ascending and descending orders.
  * <p>
- * Time complexity : O(N*log(N)).
+ * For an array of size N :
+ * <ul>
+ * <li>the time complexity is : O(N*log(N))</li>
+ * <li>the space complexity is : O(N)</li>
+ * </ul>
  */
 class MergeSort {
 
@@ -30,6 +34,18 @@ class MergeSort {
     mergeSort(input, 0, input.length - 1, isSortInAscendingOrder);
   }
 
+  /**
+   * Does an in place merge sort of the specified input array from the specified start index to the end index.
+   * 
+   * @param input
+   *          an array of integers, must not be null and must contain elements ranging from the specified start and end indices
+   * @param startIndex
+   *          an index defining the starting index of the range of numbers to sort, must be within the specified array's bounds
+   * @param endIndex
+   *          an index defining the ending index of the range of numbers to sort, must be within the specified array's bounds
+   * @param isSortInAscendingOrder
+   *          if true, sorts the input array in ascending order, otherwise in descending order
+   */
   private static void mergeSort(int[] input, int startIndex, int endIndex, boolean isSortInAscendingOrder) {
     if (startIndex < endIndex) {
       int midddleIndex = (startIndex + endIndex) / 2;
@@ -59,13 +75,24 @@ class MergeSort {
       if (leftIndex < leftLength) {
         int currentLeftValue = left[leftIndex];
 
-        if (rightIndex == rightLength || (isSortInAscendingOrder ? currentLeftValue <= right[rightIndex] : currentLeftValue >= right[rightIndex])) {
+        if (rightIndex < rightLength) {
+          int currentRightValue = right[rightIndex];
+
+          if (isSortInAscendingOrder ? currentLeftValue <= currentRightValue : currentLeftValue >= currentRightValue) {
+            input[inputIndex] = currentLeftValue;
+            leftIndex++;
+          }
+          else {
+            input[inputIndex] = currentRightValue;
+            rightIndex++;
+          }
+        }
+        else {
           input[inputIndex] = currentLeftValue;
           leftIndex++;
         }
-        else input[inputIndex] = right[rightIndex++];
       }
-      else if (rightIndex < rightLength) input[inputIndex] = right[rightIndex++];
+      else input[inputIndex] = right[rightIndex++];
     }
   }
 
