@@ -1,6 +1,7 @@
-## [Sorting Algorithms](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms)
-  1. [_Bubble Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/bubble)
-  1. [_Insertion Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/insertion)
-  1. [_Selection Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/selection)  
-  1. [_Merge Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/merge)
-  1. [_Quick Sort_](https://github.com/natandaniel/algorithms_in_java/tree/master/sorting_algorithms/src/sort/quick)
+## [Sorting Algorithms](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort)  
+
+1. [bubble sort](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort/bubble)
+1. [selection sort](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort/selection)
+1. [insertion sort](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort/insertion)
+1. [merge sort](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort/merge)
+1. [quick sort](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/sort/quick)
