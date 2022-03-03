@@ -1,39 +1,26 @@
 package sort.selection;
 
-/**
- * 
- * Provides an implementation of the selection sort algorithm.
- * <p>
- * Time complexity : O(N^2).
- *
- */
+import java.util.Objects;
+
 class SelectionSort {
 
-	private SelectionSort() {
-	}
+  private SelectionSort() {}
 
-	/**
-	 * Sorts the input array in ascending or descending order.
-	 * 
-	 * @param input                  an integer array, must not be null
-	 * @param isSortInAscendingOrder if true, sorts the input array in ascending
-	 *                               order, otherwise in descending order
-	 */
-	static void sort(int[] input, boolean isSortInAscendingOrder) {
-		int length = input.length;
+  static void sort(double[] input) {
+    Objects.requireNonNull(input);
 
-		for (int j = 0; j < length - 1; j++) {
-			int minOrMax = j;
+    int length = input.length;
 
-			for (int i = j + 1; i < length; i++) {
-				if (isSortInAscendingOrder ? input[i] < input[minOrMax] : input[minOrMax] < input[i])
-					minOrMax = i;
-			}
+    for (int j = 0; j < length - 1; j++) {
+      int minimumNumberIndex = j;
 
-			int tmp = input[j];
-			input[j] = input[minOrMax];
-			input[minOrMax] = tmp;
-		}
-	}
+      for (int i = j + 1; i < length; i++)
+        if (input[i] < input[minimumNumberIndex]) minimumNumberIndex = i;
+
+      double key = input[j];
+      input[j] = input[minimumNumberIndex];
+      input[minimumNumberIndex] = key;
+    }
+  }
 
 }
