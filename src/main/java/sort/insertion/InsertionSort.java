@@ -6,11 +6,11 @@ class InsertionSort {
 
   private InsertionSort() {}
 
-  static void sort(int[] input) {
+  static void sort(double[] input) {
     Objects.requireNonNull(input);
 
     for (int j = 1; j < input.length; j++) {
-      int key = input[j];
+      double key = input[j];
       int i = j - 1;
 
       while (-1 < i && key < input[i])
