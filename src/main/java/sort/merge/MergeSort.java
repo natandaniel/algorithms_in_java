@@ -21,28 +21,28 @@ class MergeSort {
   }
 
   private static void merge(double[] input, int startIndex, int middleIndex, int endIndex) {
-    int lengthOfFirstHalf = middleIndex - startIndex + 1;
-    double[] firstHalf = new double[lengthOfFirstHalf + 1];
+    int firstHalfLength = middleIndex - startIndex + 1;
+    double[] left = new double[firstHalfLength + 1];
 
-    for (int i = 0; i < lengthOfFirstHalf; i++)
-      firstHalf[i] = input[startIndex + i];
+    for (int i = 0; i < firstHalfLength; i++)
+      left[i] = input[startIndex + i];
 
-    firstHalf[lengthOfFirstHalf] = Double.POSITIVE_INFINITY;
+    left[firstHalfLength] = Double.POSITIVE_INFINITY;
 
-    int lengthOfSecondHalf = endIndex - middleIndex;
-    double[] secondHalf = new double[lengthOfSecondHalf + 1];
+    int secondHalfLength = endIndex - middleIndex;
+    double[] right = new double[secondHalfLength + 1];
 
-    for (int i = 0; i < lengthOfSecondHalf; i++)
-      secondHalf[i] = input[middleIndex + 1 + i];
+    for (int i = 0; i < secondHalfLength; i++)
+      right[i] = input[middleIndex + 1 + i];
 
-    secondHalf[lengthOfSecondHalf] = Double.POSITIVE_INFINITY;
+    right[secondHalfLength] = Double.POSITIVE_INFINITY;
 
     int firstHalfIndex = 0;
     int secondHalfIndex = 0;
 
     for (int inputIndex = startIndex; inputIndex <= endIndex; inputIndex++) {
-      if (firstHalf[firstHalfIndex] <= secondHalf[secondHalfIndex]) input[inputIndex] = firstHalf[firstHalfIndex++];
-      else input[inputIndex] = secondHalf[secondHalfIndex++];
+      if (left[firstHalfIndex] <= right[secondHalfIndex]) input[inputIndex] = left[firstHalfIndex++];
+      else input[inputIndex] = right[secondHalfIndex++];
     }
   }
 
