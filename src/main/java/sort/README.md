@@ -1,7 +1,8 @@
 <i>Following is the statement of the <b>sorting problem</b> :
 <p>
-input : a sequence of n numbers A = < a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub> ></br>
-output : a permutation of A, < a'<sub>1</sub>, a'<sub>2</sub>, ..., a'<sub>n</sub> >, such that : a'<sub>1</sub> <= a'<sub>2</sub> <= ... <= a'<sub>n</sub>
+<b>input</b> : a sequence of n numbers A = < a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub> ></br>
+<p>
+<b>output</b> : a permutation of A, < a'<sub>1</sub>, a'<sub>2</sub>, ..., a'<sub>n</sub> >, such that : a'<sub>1</sub> <= a'<sub>2</sub> <= ... <= a'<sub>n</sub>
 
 This folder contains several solution algorithms with their pseudo code, implementations and tests : 
 

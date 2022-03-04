@@ -27,7 +27,7 @@ class BinaryAddition {
           result[i + 1] = 1; // result[i] necessarily contains 1
           break;
         default:
-          throw new IllegalArgumentException("unexpected coefficient value : " + coeff + "; a and b should contain 0 or 1 values only; read a[i] = " + a[i] + "; read b[i] = " + b[i]);
+          throw new IllegalArgumentException("unexpected coefficient value : " + coeff + "; a and b should contain 0 or 1 values only; found a[i] = " + a[i] + "; found b[i] = " + b[i]);
       }
     }
 
