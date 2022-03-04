@@ -1,26 +1,24 @@
-# Binary Addition
+<i>Following is the statement of the <b>binary addition problem</b> :
+<p>
+input : </br>
+a sequence of n 0 or 1 values A = < a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub> > corresponding to the coefficients of an integer in base 2 over n bits : a<sub>1</sub>.2<sup>0</sup> + a<sub>2</sub>.2<sup>1</sup> + ... + a<sub>n</sub>.2<sup>n-1</sup></br>
+a sequence of n 0 or 1 values B = < b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>n</sub> > corresponding to the coefficients of an integer in base 2 over n bits : b<sub>1</sub>.2<sup>0</sup> + b<sub>2</sub>.2<sup>1</sup> + ... + b<sub>n</sub>.2<sup>n-1</sup></br>
 
-input : sequence _A_ of _N_ integers a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>N</sub> equal to 0 or 1 providing a binary representation of an integer value; 
-sequence _B_ of _N_ integers b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>N</sub> equal to 0 or 1 providing a binary representation of an integer value;
+output : a sequence of n+1 0 or 1 values C = < c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>n+1</sub> > corresponding to the coefficients of the integer in base 2 over n+1 bits resulting from the addition of A to B : c<sub>1</sub>.2<sup>0</sup> + c<sub>2</sub>.2<sup>1</sup> + ... + c<sub>n+1</sub>.2<sup>n</sup></br>
 
-output :  sequence _C_ of _N+1_ integers c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>N+1</sub> equal to 0 or 1 providing a binary representation of the sum of the integers represented by _A_ and _B_
-
-Pseudo-code :
-    	
-    carry = 0 
+	add(A, B)
+	  // create array C of size N+1 
+	  for i = 1 to N+1
+	    C[i] = 0
     
-    for i = N to 1
-     sum = A[i] + B[i] + carry
-     if (sum == 3) 
-     	C[i+1] = 1
-     	carry = 1
-     else if (sum == 2)
-     	C[i+1] = 0
-     	carry = 1
-     else 
-     	C[i+1] = sum;
-     	carry = 0
-     	
-     C[1] = carry
-
-For each index of _A_ and _B_, one addition and one to two comparisons are performed. The time complexity is linear relatively to the size of _A_ and _B_ : **_O(N)_**.
+	  for i = 1 to N
+	    sum = A[i] + B[i] + C[i]
+	    if (sum == 1) C[i] = 1
+	    else if (sum == 2)
+	      C[i] = 0
+	      C[i+1] = 1
+	    else if(sum == 3)
+	      C[i] = 1
+	      C[i+1] = 1 	
+		 
+	  return C
