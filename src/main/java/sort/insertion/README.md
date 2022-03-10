@@ -10,5 +10,9 @@
        i = i-1
      A[i+1] = key    
 
- </i>
- 
+
+execution time : 
+ <ul>
+ <li> best case scenario : O(N)</li>
+ <li> worst case scenario : O(N<sup>2</sup>)</li>
+</ul>
