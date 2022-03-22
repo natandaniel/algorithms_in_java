@@ -6,21 +6,35 @@ class MergeSort {
 
   private MergeSort() {}
 
-  static void sort(double[] input) {
+  static void sort1(double[] input) {
     Objects.requireNonNull(input);
-    mergeSort(input, 0, input.length - 1);
+    mergeSort1(input, 0, input.length - 1);
   }
 
-  private static void mergeSort(double[] input, int startIndex, int endIndex) {
+  static void sort2(double[] input) {
+    Objects.requireNonNull(input);
+    mergeSort2(input, 0, input.length - 1);
+  }
+
+  private static void mergeSort1(double[] input, int startIndex, int endIndex) {
     if (startIndex < endIndex) {
       int midddleIndex = (startIndex + endIndex) / 2;
-      mergeSort(input, startIndex, midddleIndex);
-      mergeSort(input, midddleIndex + 1, endIndex);
-      merge(input, startIndex, midddleIndex, endIndex);
+      mergeSort1(input, startIndex, midddleIndex);
+      mergeSort1(input, midddleIndex + 1, endIndex);
+      merge1(input, startIndex, midddleIndex, endIndex);
     }
   }
 
-  private static void merge(double[] input, int startIndex, int middleIndex, int endIndex) {
+  private static void mergeSort2(double[] input, int startIndex, int endIndex) {
+    if (startIndex < endIndex) {
+      int midddleIndex = (startIndex + endIndex) / 2;
+      mergeSort2(input, startIndex, midddleIndex);
+      mergeSort2(input, midddleIndex + 1, endIndex);
+      merge2(input, startIndex, midddleIndex, endIndex);
+    }
+  }
+
+  private static void merge1(double[] input, int startIndex, int middleIndex, int endIndex) {
     int firstHalfLength = middleIndex - startIndex + 1;
     double[] left = new double[firstHalfLength + 1];
 
@@ -42,6 +56,28 @@ class MergeSort {
 
     for (int inputIndex = startIndex; inputIndex <= endIndex; inputIndex++) {
       if (left[firstHalfIndex] <= right[secondHalfIndex]) input[inputIndex] = left[firstHalfIndex++];
+      else input[inputIndex] = right[secondHalfIndex++];
+    }
+  }
+
+  private static void merge2(double[] input, int startIndex, int middleIndex, int endIndex) {
+    int firstHalfLength = middleIndex - startIndex + 1;
+    double[] left = new double[firstHalfLength];
+
+    for (int i = 0; i < firstHalfLength; i++)
+      left[i] = input[startIndex + i];
+
+    int secondHalfLength = endIndex - middleIndex;
+    double[] right = new double[secondHalfLength];
+
+    for (int i = 0; i < secondHalfLength; i++)
+      right[i] = input[middleIndex + 1 + i];
+
+    int firstHalfIndex = 0;
+    int secondHalfIndex = 0;
+
+    for (int inputIndex = startIndex; inputIndex <= endIndex; inputIndex++) {
+      if (secondHalfIndex == secondHalfLength || (firstHalfIndex < firstHalfLength && left[firstHalfIndex] <= right[secondHalfIndex])) input[inputIndex] = left[firstHalfIndex++];
       else input[inputIndex] = right[secondHalfIndex++];
     }
   }
