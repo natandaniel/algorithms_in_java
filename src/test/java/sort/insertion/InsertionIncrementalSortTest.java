@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import sort.TestData;
 
-public class InsertionSortTest {
+public class InsertionIncrementalSortTest {
   private static double[] randomOrderInput;
   private static double[] ascendingOrderInput;
   private static double[] descendingOrderInput;
@@ -21,25 +21,25 @@ public class InsertionSortTest {
   }
 
   @Test
-  public void Given_ANullArray_When_Sorting_Then_ShouldThrowNullPointerException() {
-    Assert.assertThrows(NullPointerException.class, () -> InsertionSort.sort(null));
+  public void Given_ANullArray_When_SortingInput_Then_ShouldThrowNullPointerException() {
+    Assert.assertThrows(NullPointerException.class, () -> InsertionSort.incrementalSort(null));
   }
 
   @Test
   public void Given_InputNumbersInRandomOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
-    InsertionSort.sort(randomOrderInput);
+    InsertionSort.incrementalSort(randomOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, randomOrderInput, 0);
   }
 
   @Test
   public void Given_InputNumbersInAscendingOrder_When_SortingInput_Then_InputShouldRemainUnchanged() {
-    InsertionSort.sort(ascendingOrderInput);
+    InsertionSort.incrementalSort(ascendingOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, ascendingOrderInput, 0);
   }
 
   @Test
   public void Given_InputNumberInDescendingOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
-    InsertionSort.sort(descendingOrderInput);
+    InsertionSort.incrementalSort(descendingOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, descendingOrderInput, 0);
   }
 
