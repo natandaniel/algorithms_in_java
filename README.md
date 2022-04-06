@@ -12,6 +12,7 @@ Algorithms for the <b>[sorting problem](https://github.com/natandaniel/algorithm
 Algorithms for <b>[searching problems](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/search)</b>:  
 
 1. [linear search](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/search/linear)
+1. [binary search](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/search/binary)
 
 Algorithms for **[adding problems](https://github.com/natandaniel/algorithms_in_java/tree/master/src/main/java/addition)** :  
 
