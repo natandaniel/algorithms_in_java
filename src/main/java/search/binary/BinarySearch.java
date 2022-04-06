@@ -16,7 +16,7 @@ class BinarySearch {
    * @return an index where the specified value is stored in the specified array if found, -1 otherwise.
    */
   static int iterativeSearch(double value, double[] input) {
-    return iterativeSearch(value, Objects.requireNonNull(input), 0, input.length);
+    return iterativeSearch(value, Objects.requireNonNull(input), 0, input.length - 1);
   }
 
   /**
@@ -29,7 +29,7 @@ class BinarySearch {
    * @return an index where the specified value is stored in the specified array if found, -1 otherwise.
    */
   static int recursiveSearch(double value, double[] input) {
-    return recursiveSearch(value, Objects.requireNonNull(input), 0, input.length);
+    return recursiveSearch(value, Objects.requireNonNull(input), 0, input.length - 1);
   }
 
   private static int iterativeSearch(double value, double[] input, int startIndex, int endIndex) {
@@ -65,7 +65,7 @@ class BinarySearch {
   private static boolean isInputIncorrect(double[] input, int startIndex, int endIndex) {
     boolean isEmptyOrNullInputArray = input == null || input.length == 0;
     boolean isStartIndexOutOfRange = startIndex < 0 || input.length <= startIndex;
-    boolean isEndIndexOutOfRange = input.length < 0 || input.length <= input.length;
+    boolean isEndIndexOutOfRange = endIndex < 0 || input.length <= endIndex;
     boolean isStartIndexGreaterThanEndIndex = endIndex < startIndex;
     return isEmptyOrNullInputArray || isStartIndexOutOfRange || isEndIndexOutOfRange || isStartIndexGreaterThanEndIndex;
   }

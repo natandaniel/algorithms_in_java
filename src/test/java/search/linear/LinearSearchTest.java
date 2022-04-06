@@ -1,26 +1,20 @@
 package search.linear;
 
-import java.util.OptionalInt;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import common.TestData;
+
 public class LinearSearchTest {
-  private static double[] INPUT = new double[30];
 
-  static {
-    for (int i = 0; i < INPUT.length; i++)
-      INPUT[i] = i + 1;
+  @Test
+  public void Given_InputNumbersInRandomOrder_When_SearchingForTheLastValueInTheSequence_Then_ShouldReturnTheLastIndexInTheSequence() {
+    Assert.assertEquals(99999, LinearSearch.search(TestData.INPUT[TestData.INPUT.length - 1], TestData.INPUT));
   }
 
   @Test
-  public void Given_IntegersFrom1To30_When_SearchingForValue24_Then_ReturnIndex23() {
-    Assert.assertEquals(OptionalInt.of(23), LinearSearch.search(24, INPUT));
-  }
-
-  @Test
-  public void Given_IntegersFrom1To30_When_SearchingForValue31_Then_ReturnOptionalEmpty() {
-    Assert.assertEquals(OptionalInt.empty(), LinearSearch.search(31, INPUT));
+  public void Given_InputNumbersInRandomOrder_When_SearchingForAValueOutsideOfTheSequence_Then_ShouldReturnNegativeOne() {
+    Assert.assertEquals(-1, LinearSearch.search(501, TestData.INPUT));
   }
 
 }

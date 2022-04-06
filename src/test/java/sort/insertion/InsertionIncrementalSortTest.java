@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import sort.TestData;
+import common.TestData;
 
 public class InsertionIncrementalSortTest {
   private static double[] randomOrderInput;
