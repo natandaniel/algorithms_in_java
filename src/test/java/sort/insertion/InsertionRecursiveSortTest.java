@@ -15,9 +15,9 @@ public class InsertionRecursiveSortTest {
 
   @BeforeClass
   public static void init() {
-    randomOrderInput = Arrays.copyOf(TestData.INPUT, TestData.INPUT.length);
-    ascendingOrderInput = Arrays.copyOf(TestData.INPUT_IN_ASCENDING_ORDER, TestData.INPUT_IN_ASCENDING_ORDER.length);
-    descendingOrderInput = Arrays.copyOf(TestData.INPUT_IN_DESCENDING_ORDER, TestData.INPUT_IN_DESCENDING_ORDER.length);
+    randomOrderInput = Arrays.copyOf(TestData.INPUT_5K_NUMBERS, TestData.INPUT_5K_NUMBERS.length);
+    ascendingOrderInput = Arrays.copyOf(TestData.INPUT_5K_NUMBERS_ASCENDING, TestData.INPUT_5K_NUMBERS_ASCENDING.length);
+    descendingOrderInput = Arrays.copyOf(TestData.INPUT_5K_NUMBERS_DESCENDING, TestData.INPUT_5K_NUMBERS_DESCENDING.length);
   }
 
   @Test
@@ -29,7 +29,7 @@ public class InsertionRecursiveSortTest {
   public void Given_InputNumbersInRandomOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
     try {
       InsertionSort.recursiveSort(randomOrderInput, 0, randomOrderInput.length - 1);
-      Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, randomOrderInput, 0);
+      Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, randomOrderInput, 0);
     }
     catch (StackOverflowError e) {
       Assert.fail(e.getMessage());
@@ -40,7 +40,7 @@ public class InsertionRecursiveSortTest {
   public void Given_InputNumbersInAscendingOrder_When_SortingInput_Then_InputShouldRemainUnchanged() {
     try {
       InsertionSort.recursiveSort(ascendingOrderInput, 0, ascendingOrderInput.length - 1);
-      Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, ascendingOrderInput, 0);
+      Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, ascendingOrderInput, 0);
     }
     catch (StackOverflowError e) {
       Assert.fail(e.getMessage());
@@ -51,7 +51,7 @@ public class InsertionRecursiveSortTest {
   public void Given_InputNumberInDescendingOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
     try {
       InsertionSort.recursiveSort(descendingOrderInput, 0, descendingOrderInput.length - 1);
-      Assert.assertArrayEquals(TestData.INPUT_IN_ASCENDING_ORDER, descendingOrderInput, 0);
+      Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, descendingOrderInput, 0);
     }
     catch (StackOverflowError e) {
       Assert.fail(e.getMessage());
