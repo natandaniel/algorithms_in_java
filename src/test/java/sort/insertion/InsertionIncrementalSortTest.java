@@ -22,24 +22,24 @@ public class InsertionIncrementalSortTest {
 
   @Test
   public void Given_ANullArray_When_SortingInput_Then_ShouldThrowNullPointerException() {
-    Assert.assertThrows(NullPointerException.class, () -> InsertionSort.incrementalSort(null));
+    Assert.assertThrows(NullPointerException.class, () -> InsertionSort.iterativeSort(null));
   }
 
   @Test
   public void Given_InputNumbersInRandomOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
-    InsertionSort.incrementalSort(randomOrderInput);
+    InsertionSort.iterativeSort(randomOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, randomOrderInput, 0);
   }
 
   @Test
   public void Given_InputNumbersInAscendingOrder_When_SortingInput_Then_InputShouldRemainUnchanged() {
-    InsertionSort.incrementalSort(ascendingOrderInput);
+    InsertionSort.iterativeSort(ascendingOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, ascendingOrderInput, 0);
   }
 
   @Test
   public void Given_InputNumberInDescendingOrder_When_SortingInput_Then_InputShouldBeSortedInAscendingOrder() {
-    InsertionSort.incrementalSort(descendingOrderInput);
+    InsertionSort.iterativeSort(descendingOrderInput);
     Assert.assertArrayEquals(TestData.INPUT_5K_NUMBERS_ASCENDING, descendingOrderInput, 0);
   }
 
